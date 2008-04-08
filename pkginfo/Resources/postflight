@@ -1,0 +1,7 @@
+#!/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
+
+startup="/Library/org.pqrs/SetEjectDelay/scripts/startup.sh"
+[ -f "$startup" ] && "$startup" quickstart
+
+exit 0
