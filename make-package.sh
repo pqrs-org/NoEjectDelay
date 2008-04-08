@@ -5,7 +5,6 @@ version=$(cat version)
 packagemaker=/Developer/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
 pkgName="SetEjectDelay-${version}.pkg"
 
-echo "char * const config_version = \"$version-Tiger\";" > src/kext/Tiger/version.hpp
 echo "char * const config_version = \"$version-Leopard\";" > src/kext/Leopard/version.hpp
 
 make clean build || exit $?
@@ -19,7 +18,7 @@ sudo mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/SetEjectDelay"
 sudo mkdir -p "pkgroot/$basedir"
-for ostype in Tiger Leopard; do
+for ostype in Leopard; do
     sudo cp -R src/kext/${ostype}/build/Release/SetEjectDelay.kext "pkgroot/$basedir/SetEjectDelay.${ostype}.kext"
 done
 sudo cp -R files/extra "pkgroot/$basedir"
@@ -55,3 +54,5 @@ echo "Make Archive"
 
 sudo chown -R root:wheel $pkgName
 sudo tar zcf $pkgName.tar.gz $pkgName
+sudo rm -rf $pkgName
+tar zxf $pkgName.tar.gz
