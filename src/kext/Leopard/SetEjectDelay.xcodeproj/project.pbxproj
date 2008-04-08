@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 44;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		34DA85F60D06E4CB00AE69E6 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85EF0D06E4CB00AE69E6 /* base.hpp */; };
 		34DA85F70D06E4CB00AE69E6 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DA85F00D06E4CB00AE69E6 /* config.cpp */; };
 		34DA85F80D06E4CB00AE69E6 /* config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85F10D06E4CB00AE69E6 /* config.hpp */; };
-		34DA85F90D06E4CB00AE69E6 /* keymap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85F20D06E4CB00AE69E6 /* keymap.hpp */; };
 		34DA85FA0D06E4CB00AE69E6 /* SetEjectDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DA85F30D06E4CB00AE69E6 /* SetEjectDelay.cpp */; };
 		34DA85FB0D06E4CB00AE69E6 /* SetEjectDelay.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85F40D06E4CB00AE69E6 /* SetEjectDelay.hpp */; };
 		34DA86010D06E4EA00AE69E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34DA85FE0D06E4EA00AE69E6 /* InfoPlist.strings */; };
@@ -24,7 +23,6 @@
 		34DA85EF0D06E4CB00AE69E6 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = base.hpp; path = ../common/base.hpp; sourceTree = SOURCE_ROOT; };
 		34DA85F00D06E4CB00AE69E6 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config.cpp; path = ../common/config.cpp; sourceTree = SOURCE_ROOT; };
 		34DA85F10D06E4CB00AE69E6 /* config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = config.hpp; path = ../common/config.hpp; sourceTree = SOURCE_ROOT; };
-		34DA85F20D06E4CB00AE69E6 /* keymap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = keymap.hpp; path = ../common/keymap.hpp; sourceTree = SOURCE_ROOT; };
 		34DA85F30D06E4CB00AE69E6 /* SetEjectDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetEjectDelay.cpp; path = ../common/SetEjectDelay.cpp; sourceTree = SOURCE_ROOT; };
 		34DA85F40D06E4CB00AE69E6 /* SetEjectDelay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SetEjectDelay.hpp; path = ../common/SetEjectDelay.hpp; sourceTree = SOURCE_ROOT; };
 		34DA85FF0D06E4EA00AE69E6 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -78,7 +76,6 @@
 				34DA85EF0D06E4CB00AE69E6 /* base.hpp */,
 				34DA85F00D06E4CB00AE69E6 /* config.cpp */,
 				34DA85F10D06E4CB00AE69E6 /* config.hpp */,
-				34DA85F20D06E4CB00AE69E6 /* keymap.hpp */,
 				34DA85F30D06E4CB00AE69E6 /* SetEjectDelay.cpp */,
 				34DA85F40D06E4CB00AE69E6 /* SetEjectDelay.hpp */,
 			);
@@ -103,7 +100,6 @@
 			files = (
 				34DA85F60D06E4CB00AE69E6 /* base.hpp in Headers */,
 				34DA85F80D06E4CB00AE69E6 /* config.hpp in Headers */,
-				34DA85F90D06E4CB00AE69E6 /* keymap.hpp in Headers */,
 				34DA85FB0D06E4CB00AE69E6 /* SetEjectDelay.hpp in Headers */,
 				340442AF0D124729005721A2 /* version.hpp in Headers */,
 			);
@@ -138,7 +134,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "SetEjectDelay" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
 			mainGroup = 089C166AFE841209C02AAC07 /* SetEjectDelay */;
 			projectDirPath = "";
@@ -255,7 +251,7 @@
 				OTHER_CPLUSPLUSFLAGS = "-no-cpp-precomp";
 				PREBINDING = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 				USER_HEADER_SEARCH_PATHS = Leopard;
 			};
 			name = Debug;
@@ -275,7 +271,7 @@
 				OTHER_CPLUSPLUSFLAGS = "-no-cpp-precomp";
 				PREBINDING = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 				USER_HEADER_SEARCH_PATHS = "include ../common /Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Kernel.framework/Headers/IOKit//**";
 			};
 			name = Release;

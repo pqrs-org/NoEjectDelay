@@ -17,34 +17,15 @@ public:
   virtual bool start(IOService *provider);
   virtual void stop(IOService *provider);
 
-  static void customizeAllKeymap(void);
-
 private:
-  enum {
-    MAXNUM_KEYBOARD = 4,
-  };
+  static int setEjectDelay(IOHIKeyboard *kbd, int delay);
+  static bool notifierfunc_hookKeyboard(org_pqrs_driver_SetEjectDelay *self, void *ref, IOService *newService);
+  static bool notifierfunc_unhookKeyboard(org_pqrs_driver_SetEjectDelay *self, void *ref, IOService *newService);
 
-  // ------------------------------------------------------------
-  struct HookedKeyboard {
-    IOHIKeyboard *kbd;
-#include "generate/output/include.code.hpp"
+  IONotifier *notifier_hookKeyboard;
+  IONotifier *notifier_unhookKeyboard;
 
-    void initialize(IOHIKeyboard *p);
-    void terminate(void);
-    void refresh(void);
-  };
-  static HookedKeyboard hookedKeyboard[MAXNUM_KEYBOARD];
-  static HookedKeyboard *new_hookedKeyboard(void);
-  static HookedKeyboard *search_hookedKeyboard(const IOHIKeyboard *kbd);
-
-  static bool notifier_hookKeyboard(org_pqrs_driver_SetEjectDelay *self, void *ref, IOService *newService);
-  static bool notifier_unhookKeyboard(org_pqrs_driver_SetEjectDelay *self, void *ref, IOService *newService);
-
-  static bool customizeKeyMap(IOHIKeyboard *kbd);
-  static bool restoreKeyMap(IOHIKeyboard *kbd);
-
-  IONotifier *keyboardNotifier;
-  IONotifier *terminatedNotifier;
+  int originalDelay;
 };
 
 #endif

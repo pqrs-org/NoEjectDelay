@@ -3,23 +3,36 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 basedir="/Library/org.pqrs/SetEjectDelay"
 
+# --------------------
+uname=`uname -r`
+case "${uname%%.*}" in
+    9)
+        kextfile="$basedir/SetEjectDelay.Leopard.kext"
+        ;;
+esac
+
+if [ "x$kextfile" == 'x' ]; then
+    exit 1
+fi
+
+# --------------------
 argument="$1"
 [ -z "$argument" ] && argument=start
 case "$argument" in
     start)
         echo "Starting SetEjectDelay"
         sleep 10 # wait for avoid kext loading collision.
-        "$basedir/scripts/kext.sh"
+        kextload "$kextfile"
         ;;
 
     quickstart)
         echo "Starting SetEjectDelay"
-        "$basedir/scripts/kext.sh"
+        kextload "$kextfile"
         ;;
 
     stop)
         echo "Stopping SetEjectDelay"
-        "$basedir/scripts/kext.sh" unload
+        kextunload -b org.pqrs.driver.SetEjectDelay
         ;;
 
     *)
