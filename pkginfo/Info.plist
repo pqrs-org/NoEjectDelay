@@ -9,7 +9,7 @@
     <string>org.pqrs.driver.SetEjectDelay</string>
 
     <key>CFBundleShortVersionString</key>
-    <string>0.99.0</string>
+    <string>0.99.1</string>
 
     <key>IFPkgFlagAllowBackRev</key>
     <false/>
