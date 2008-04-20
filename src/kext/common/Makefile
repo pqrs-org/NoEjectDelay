@@ -2,7 +2,7 @@
 CONFIGURATION = Release
 
 all:
-	xcodebuild -alltargets -configuration $(CONFIGURATION) build
+	xcodebuild -alltargets -configuration $(CONFIGURATION) MODULE_VERSION=`cat ../../../version` CURRENT_PROJECT_VERSION=`cat ../../../version` build
 
 clean:
 	xcodebuild -alltargets -configuration $(CONFIGURATION) clean
