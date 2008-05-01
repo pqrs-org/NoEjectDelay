@@ -57,15 +57,6 @@ org_pqrs_driver_NoEjectDelay::start(IOService *provider)
     return false;
   }
 
-  notifier_unhookKeyboard = addNotification(gIOTerminatedNotification,
-                                            serviceMatching("IOHIKeyboard"),
-                                            ((IOServiceNotificationHandler)&(org_pqrs_driver_NoEjectDelay::notifierfunc_unhookKeyboard)),
-                                            this, NULL, 0);
-  if (notifier_unhookKeyboard == NULL) {
-    IOLog("[NoEjectDelay ERROR] addNotification(gIOTerminatedNotification) Keyboard\n");
-    return false;
-  }
-
   return res;
 }
 
@@ -89,9 +80,8 @@ org_pqrs_driver_NoEjectDelay::setEjectDelay(IOHIKeyboard *kbd, int delay)
   IOHIDEventService *service = consumer->_provider;
   if (! service->_reserved) return -1;
 
-  int orig = service->_reserved->ejectDelayMS;
   service->_reserved->ejectDelayMS = delay;
-  return orig;
+  return 0;
 }
 
 bool
@@ -101,22 +91,6 @@ org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(org_pqrs_driver_NoEjectD
 
   IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
 
-  int orig = setEjectDelay(kbd, 5);
-  if (orig != -1) {
-    self->originalDelay = orig;
-  }
-
-  return true;
-}
-
-bool
-org_pqrs_driver_NoEjectDelay::notifierfunc_unhookKeyboard(org_pqrs_driver_NoEjectDelay *self, void *ref, IOService *newService)
-{
-  IOLog("NoEjectDelay::notifierfunc_unhookKeyboard\n");
-
-  IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
-
-  setEjectDelay(kbd, self->originalDelay);
-
+  setEjectDelay(kbd, 5);
   return true;
 }

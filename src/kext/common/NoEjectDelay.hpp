@@ -20,12 +20,8 @@ public:
 private:
   static int setEjectDelay(IOHIKeyboard *kbd, int delay);
   static bool notifierfunc_hookKeyboard(org_pqrs_driver_NoEjectDelay *self, void *ref, IOService *newService);
-  static bool notifierfunc_unhookKeyboard(org_pqrs_driver_NoEjectDelay *self, void *ref, IOService *newService);
 
   IONotifier *notifier_hookKeyboard;
-  IONotifier *notifier_unhookKeyboard;
-
-  int originalDelay;
 };
 
 #endif
