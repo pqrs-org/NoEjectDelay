@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo kextunload -b org.pqrs.driver.SetEjectDelay
+sudo kextunload -b org.pqrs.driver.NoEjectDelay

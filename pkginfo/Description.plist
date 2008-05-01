@@ -3,8 +3,8 @@
 <plist version="1.0">
   <dict>
     <key>IFPkgDescriptionDescription</key>
-    <string>SetEjectDelay</string>
+    <string>NoEjectDelay</string>
     <key>IFPkgDescriptionTitle</key>
-    <string>SetEjectDelay</string>
+    <string>NoEjectDelay</string>
   </dict>
 </plist>

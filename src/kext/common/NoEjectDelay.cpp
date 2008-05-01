@@ -1,7 +1,7 @@
 // -*- Mode: c++; indent-tabs-mode: nil; -*-
 
 #include "base.hpp"
-#include "SetEjectDelay.hpp"
+#include "NoEjectDelay.hpp"
 #include "config.hpp"
 
 // ----------------------------------------------------------------------
@@ -11,58 +11,58 @@
 #define super    IOService
 // You cannot use the "super" macro here, however, with the
 //  OSDefineMetaClassAndStructors macro.
-OSDefineMetaClassAndStructors(org_pqrs_driver_SetEjectDelay, IOService)
+OSDefineMetaClassAndStructors(org_pqrs_driver_NoEjectDelay, IOService)
 
 // ----------------------------------------------------------------------
 bool
-org_pqrs_driver_SetEjectDelay::init(OSDictionary *dict)
+org_pqrs_driver_NoEjectDelay::init(OSDictionary *dict)
 {
-  IOLog("SetEjectDelay::init\n");
+  IOLog("NoEjectDelay::init\n");
 
   bool res = super::init(dict);
-  org_pqrs_SetEjectDelay::sysctl_register();
+  org_pqrs_NoEjectDelay::sysctl_register();
 
   return res;
 }
 
 void
-org_pqrs_driver_SetEjectDelay::free(void)
+org_pqrs_driver_NoEjectDelay::free(void)
 {
-  IOLog("SetEjectDelay::free\n");
+  IOLog("NoEjectDelay::free\n");
 
-  org_pqrs_SetEjectDelay::sysctl_unregister();
+  org_pqrs_NoEjectDelay::sysctl_unregister();
   super::free();
 }
 
 IOService *
-org_pqrs_driver_SetEjectDelay::probe(IOService *provider, SInt32 *score)
+org_pqrs_driver_NoEjectDelay::probe(IOService *provider, SInt32 *score)
 {
   IOService *res = super::probe(provider, score);
   return res;
 }
 
 bool
-org_pqrs_driver_SetEjectDelay::start(IOService *provider)
+org_pqrs_driver_NoEjectDelay::start(IOService *provider)
 {
   bool res = super::start(provider);
-  IOLog("SetEjectDelay::start\n");
+  IOLog("NoEjectDelay::start\n");
   if (!res) { return res; }
 
   notifier_hookKeyboard = addNotification(gIOMatchedNotification,
                                           serviceMatching("IOHIKeyboard"),
-                                          ((IOServiceNotificationHandler)&(org_pqrs_driver_SetEjectDelay::notifierfunc_hookKeyboard)),
+                                          ((IOServiceNotificationHandler)&(org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard)),
                                           this, NULL, 0);
   if (notifier_hookKeyboard == NULL) {
-    IOLog("[SetEjectDelay ERROR] addNotification(gIOMatchedNotification) Keyboard\n");
+    IOLog("[NoEjectDelay ERROR] addNotification(gIOMatchedNotification) Keyboard\n");
     return false;
   }
 
   notifier_unhookKeyboard = addNotification(gIOTerminatedNotification,
                                             serviceMatching("IOHIKeyboard"),
-                                            ((IOServiceNotificationHandler)&(org_pqrs_driver_SetEjectDelay::notifierfunc_unhookKeyboard)),
+                                            ((IOServiceNotificationHandler)&(org_pqrs_driver_NoEjectDelay::notifierfunc_unhookKeyboard)),
                                             this, NULL, 0);
   if (notifier_unhookKeyboard == NULL) {
-    IOLog("[SetEjectDelay ERROR] addNotification(gIOTerminatedNotification) Keyboard\n");
+    IOLog("[NoEjectDelay ERROR] addNotification(gIOTerminatedNotification) Keyboard\n");
     return false;
   }
 
@@ -70,15 +70,15 @@ org_pqrs_driver_SetEjectDelay::start(IOService *provider)
 }
 
 void
-org_pqrs_driver_SetEjectDelay::stop(IOService *provider)
+org_pqrs_driver_NoEjectDelay::stop(IOService *provider)
 {
-  IOLog("SetEjectDelay::stop\n");
+  IOLog("NoEjectDelay::stop\n");
   super::stop(provider);
 }
 
 // ----------------------------------------
 int
-org_pqrs_driver_SetEjectDelay::setEjectDelay(IOHIKeyboard *kbd, int delay)
+org_pqrs_driver_NoEjectDelay::setEjectDelay(IOHIKeyboard *kbd, int delay)
 {
   if (! kbd) return -1;
 
@@ -95,9 +95,9 @@ org_pqrs_driver_SetEjectDelay::setEjectDelay(IOHIKeyboard *kbd, int delay)
 }
 
 bool
-org_pqrs_driver_SetEjectDelay::notifierfunc_hookKeyboard(org_pqrs_driver_SetEjectDelay *self, void *ref, IOService *newService)
+org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(org_pqrs_driver_NoEjectDelay *self, void *ref, IOService *newService)
 {
-  IOLog("SetEjectDelay::notifierfunc_hookKeyboard\n");
+  IOLog("NoEjectDelay::notifierfunc_hookKeyboard\n");
 
   IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
 
@@ -110,9 +110,9 @@ org_pqrs_driver_SetEjectDelay::notifierfunc_hookKeyboard(org_pqrs_driver_SetEjec
 }
 
 bool
-org_pqrs_driver_SetEjectDelay::notifierfunc_unhookKeyboard(org_pqrs_driver_SetEjectDelay *self, void *ref, IOService *newService)
+org_pqrs_driver_NoEjectDelay::notifierfunc_unhookKeyboard(org_pqrs_driver_NoEjectDelay *self, void *ref, IOService *newService)
 {
-  IOLog("SetEjectDelay::notifierfunc_unhookKeyboard\n");
+  IOLog("NoEjectDelay::notifierfunc_unhookKeyboard\n");
 
   IOHIKeyboard *kbd = OSDynamicCast(IOHIKeyboard, newService);
 

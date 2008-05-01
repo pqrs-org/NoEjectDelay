@@ -8,23 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		340442AF0D124729005721A2 /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 340442AE0D124729005721A2 /* version.hpp */; };
+		346D0F640DC9603E00771769 /* NoEjectDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346D0F620DC9603E00771769 /* NoEjectDelay.cpp */; };
+		346D0F650DC9603E00771769 /* NoEjectDelay.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346D0F630DC9603E00771769 /* NoEjectDelay.hpp */; };
 		34DA85F60D06E4CB00AE69E6 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85EF0D06E4CB00AE69E6 /* base.hpp */; };
 		34DA85F70D06E4CB00AE69E6 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DA85F00D06E4CB00AE69E6 /* config.cpp */; };
 		34DA85F80D06E4CB00AE69E6 /* config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85F10D06E4CB00AE69E6 /* config.hpp */; };
-		34DA85FA0D06E4CB00AE69E6 /* SetEjectDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DA85F30D06E4CB00AE69E6 /* SetEjectDelay.cpp */; };
-		34DA85FB0D06E4CB00AE69E6 /* SetEjectDelay.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85F40D06E4CB00AE69E6 /* SetEjectDelay.hpp */; };
 		34DA86010D06E4EA00AE69E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34DA85FE0D06E4EA00AE69E6 /* InfoPlist.strings */; };
 		34DA86020D06E4EA00AE69E6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34DA86000D06E4EA00AE69E6 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32D94FD00562CBF700B6AF17 /* SetEjectDelay.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetEjectDelay.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		32D94FD00562CBF700B6AF17 /* NoEjectDelay.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoEjectDelay.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		340442AE0D124729005721A2 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
+		346D0F620DC9603E00771769 /* NoEjectDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NoEjectDelay.cpp; path = ../common/NoEjectDelay.cpp; sourceTree = SOURCE_ROOT; };
+		346D0F630DC9603E00771769 /* NoEjectDelay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NoEjectDelay.hpp; path = ../common/NoEjectDelay.hpp; sourceTree = SOURCE_ROOT; };
 		34DA85EF0D06E4CB00AE69E6 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = base.hpp; path = ../common/base.hpp; sourceTree = SOURCE_ROOT; };
 		34DA85F00D06E4CB00AE69E6 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config.cpp; path = ../common/config.cpp; sourceTree = SOURCE_ROOT; };
 		34DA85F10D06E4CB00AE69E6 /* config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = config.hpp; path = ../common/config.hpp; sourceTree = SOURCE_ROOT; };
-		34DA85F30D06E4CB00AE69E6 /* SetEjectDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetEjectDelay.cpp; path = ../common/SetEjectDelay.cpp; sourceTree = SOURCE_ROOT; };
-		34DA85F40D06E4CB00AE69E6 /* SetEjectDelay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SetEjectDelay.hpp; path = ../common/SetEjectDelay.hpp; sourceTree = SOURCE_ROOT; };
 		34DA85FF0D06E4EA00AE69E6 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = InfoPlist.strings; sourceTree = "<group>"; };
 		34DA86000D06E4EA00AE69E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../common/Info.plist; sourceTree = SOURCE_ROOT; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -64,7 +64,7 @@
 		19C28FB6FE9D52B211CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				32D94FD00562CBF700B6AF17 /* SetEjectDelay.kext */,
+				32D94FD00562CBF700B6AF17 /* NoEjectDelay.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,12 +72,12 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				346D0F620DC9603E00771769 /* NoEjectDelay.cpp */,
+				346D0F630DC9603E00771769 /* NoEjectDelay.hpp */,
 				340442AE0D124729005721A2 /* version.hpp */,
 				34DA85EF0D06E4CB00AE69E6 /* base.hpp */,
 				34DA85F00D06E4CB00AE69E6 /* config.cpp */,
 				34DA85F10D06E4CB00AE69E6 /* config.hpp */,
-				34DA85F30D06E4CB00AE69E6 /* SetEjectDelay.cpp */,
-				34DA85F40D06E4CB00AE69E6 /* SetEjectDelay.hpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -100,17 +100,17 @@
 			files = (
 				34DA85F60D06E4CB00AE69E6 /* base.hpp in Headers */,
 				34DA85F80D06E4CB00AE69E6 /* config.hpp in Headers */,
-				34DA85FB0D06E4CB00AE69E6 /* SetEjectDelay.hpp in Headers */,
 				340442AF0D124729005721A2 /* version.hpp in Headers */,
+				346D0F650DC9603E00771769 /* NoEjectDelay.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		32D94FC30562CBF700B6AF17 /* SetEjectDelay */ = {
+		32D94FC30562CBF700B6AF17 /* NoEjectDelay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "SetEjectDelay" */;
+			buildConfigurationList = 1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "NoEjectDelay" */;
 			buildPhases = (
 				32D94FC50562CBF700B6AF17 /* Headers */,
 				32D94FC70562CBF700B6AF17 /* Resources */,
@@ -122,10 +122,10 @@
 			);
 			dependencies = (
 			);
-			name = SetEjectDelay;
+			name = NoEjectDelay;
 			productInstallPath = "$(SYSTEM_LIBRARY_DIR)/Extensions";
 			productName = SetEjectDelay;
-			productReference = 32D94FD00562CBF700B6AF17 /* SetEjectDelay.kext */;
+			productReference = 32D94FD00562CBF700B6AF17 /* NoEjectDelay.kext */;
 			productType = "com.apple.product-type.kernel-extension.iokit";
 		};
 /* End PBXNativeTarget section */
@@ -133,14 +133,14 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "SetEjectDelay" */;
+			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "NoEjectDelay" */;
 			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
 			mainGroup = 089C166AFE841209C02AAC07 /* SetEjectDelay */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				32D94FC30562CBF700B6AF17 /* SetEjectDelay */,
+				32D94FC30562CBF700B6AF17 /* NoEjectDelay */,
 			);
 		};
 /* End PBXProject section */
@@ -173,7 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34DA85F70D06E4CB00AE69E6 /* config.cpp in Sources */,
-				34DA85FA0D06E4CB00AE69E6 /* SetEjectDelay.cpp in Sources */,
+				346D0F640DC9603E00771769 /* NoEjectDelay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,9 +207,9 @@
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = org.pqrs.driver.SetEjectDelay;
+				MODULE_NAME = org.pqrs.driver.NoEjectDelay;
 				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = SetEjectDelay;
+				PRODUCT_NAME = NoEjectDelay;
 				WRAPPER_EXTENSION = kext;
 				ZERO_LINK = YES;
 			};
@@ -229,9 +229,9 @@
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
 				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
-				MODULE_NAME = org.pqrs.driver.SetEjectDelay;
+				MODULE_NAME = org.pqrs.driver.NoEjectDelay;
 				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = SetEjectDelay;
+				PRODUCT_NAME = NoEjectDelay;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
@@ -279,7 +279,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "SetEjectDelay" */ = {
+		1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "NoEjectDelay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB91DA08733DB10010E9CD /* Debug */,
@@ -288,7 +288,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "SetEjectDelay" */ = {
+		1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "NoEjectDelay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB91DE08733DB10010E9CD /* Debug */,

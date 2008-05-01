@@ -3,10 +3,10 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>org.pqrs.SetEjectDelay.load</string>
+    <string>org.pqrs.NoEjectDelay.load</string>
     <key>ProgramArguments</key>
     <array>
-      <string>/Library/org.pqrs/SetEjectDelay/scripts/startup.sh</string>
+      <string>/Library/org.pqrs/NoEjectDelay/scripts/startup.sh</string>
       <string>start</string>
     </array>
     <key>RunAtLoad</key>

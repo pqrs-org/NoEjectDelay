@@ -4,7 +4,7 @@
 #include "config.hpp"
 #include "version.hpp"
 
-namespace org_pqrs_SetEjectDelay {
+namespace org_pqrs_NoEjectDelay {
   // ----------------------------------------------------------------------
   // SYSCTL staff
   // http://developer.apple.com/documentation/Darwin/Conceptual/KernelProgramming/boundaries/chapter_14_section_7.html#//apple_ref/doc/uid/TP30000905-CH217-TPXREF116

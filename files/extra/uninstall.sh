@@ -2,13 +2,19 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 # ----------------------------------------
-# uninstall
-basedir="/Library/org.pqrs/SetEjectDelay"
-if [ -d $basedir ]; then
-    "$basedir/scripts/unload.sh"
-    rm -rf "$basedir"
-fi
+# unload
+startup="/Library/org.pqrs/SetEjectDelay/scripts/startup.sh"
+[ -f "$startup" ] && "$startup" stop
 
-rm -f "/Library/LaunchDaemons/org.pqrs.SetEjectDelay.load.plist"
+startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
+[ -f "$startup" ] && "$startup" stop
+
+# ----------------------------------------
+# uninstall files
+rm -rf /Library/org.pqrs/SetEjectDelay
+rm -rf /Library/org.pqrs/NoEjectDelay
+
+rm -f /Library/LaunchDaemons/org.pqrs.SetEjectDelay.*
+rm -f /Library/LaunchDaemons/org.pqrs.NoEjectDelay.*
 
 exit 0

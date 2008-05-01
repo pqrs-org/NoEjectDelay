@@ -3,7 +3,7 @@
 version=$(cat version)
 
 packagemaker=/Developer/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
-pkgName="SetEjectDelay-${version}.pkg"
+pkgName="NoEjectDelay-${version}.pkg"
 
 echo "char * const config_version = \"$version-Leopard\";" > src/kext/Leopard/version.hpp
 
@@ -16,10 +16,10 @@ echo "Copy Files"
 sudo rm -rf pkgroot
 sudo mkdir -p pkgroot
 
-basedir="/Library/org.pqrs/SetEjectDelay"
+basedir="/Library/org.pqrs/NoEjectDelay"
 sudo mkdir -p "pkgroot/$basedir"
 for ostype in Leopard; do
-    sudo cp -R src/kext/${ostype}/build/Release/SetEjectDelay.kext "pkgroot/$basedir/SetEjectDelay.${ostype}.kext"
+    sudo cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.kext"
 done
 sudo cp -R files/extra "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
