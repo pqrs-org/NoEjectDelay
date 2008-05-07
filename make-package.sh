@@ -23,6 +23,10 @@ for ostype in Leopard; do
 done
 sudo cp -R files/extra "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
+
+sudo mkdir -p "pkgroot/$basedir/extra"
+sudo cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall.sh"
+
 sudo mkdir -p "pkgroot/Library"
 sudo cp -R files/LaunchDaemons pkgroot/Library
 sudo mkdir -p "pkgroot/Library/PreferencePanes"
@@ -54,3 +58,8 @@ sudo chown -R root:wheel $pkgName
 sudo tar zcf $pkgName.tar.gz $pkgName
 sudo rm -rf $pkgName
 tar zxf $pkgName.tar.gz
+
+# --------------------------------------------------
+echo "Cleanup"
+sudo rm -rf pkgroot
+make -C src/kext clean
