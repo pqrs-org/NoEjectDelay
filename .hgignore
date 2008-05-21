@@ -9,3 +9,4 @@ pkgroot/
 src/kext/common/generate/output
 pkginfo/Info\.plist$
 src/kext/common/Info\.plist$
+src/kext/Leopard/version\.hpp$
