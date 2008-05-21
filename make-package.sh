@@ -21,7 +21,6 @@ sudo mkdir -p "pkgroot/$basedir"
 for ostype in Leopard; do
     sudo cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.kext"
 done
-sudo cp -R files/extra "pkgroot/$basedir"
 sudo cp -R files/scripts "pkgroot/$basedir"
 
 sudo mkdir -p "pkgroot/$basedir/extra"
