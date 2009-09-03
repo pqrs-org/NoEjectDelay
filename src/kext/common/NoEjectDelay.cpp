@@ -48,10 +48,10 @@ org_pqrs_driver_NoEjectDelay::start(IOService *provider)
   IOLog("NoEjectDelay::start\n");
   if (!res) { return res; }
 
-  notifier_hookKeyboard = addNotification(gIOMatchedNotification,
-                                          serviceMatching("IOHIKeyboard"),
-                                          ((IOServiceNotificationHandler)&(org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard)),
-                                          this, NULL, 0);
+  notifier_hookKeyboard = addMatchingNotification(gIOMatchedNotification,
+                                                  serviceMatching("IOHIKeyboard"),
+                                                  org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard,
+                                                  this, NULL, 0);
   if (notifier_hookKeyboard == NULL) {
     IOLog("[NoEjectDelay ERROR] addNotification(gIOMatchedNotification) Keyboard\n");
     return false;
@@ -85,7 +85,7 @@ org_pqrs_driver_NoEjectDelay::setEjectDelay(IOHIKeyboard *kbd, int delay)
 }
 
 bool
-org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(org_pqrs_driver_NoEjectDelay *self, void *ref, IOService *newService)
+org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(void *target, void *refCon, IOService *newService, IONotifier* notifier)
 {
   IOLog("NoEjectDelay::notifierfunc_hookKeyboard\n");
 

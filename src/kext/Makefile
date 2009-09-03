@@ -1,5 +1,5 @@
 all:
-	$(MAKE) -C Leopard
+	$(MAKE) -C SnowLeopard
 
 clean:
-	$(MAKE) -C Leopard clean
+	$(MAKE) -C SnowLeopard clean
