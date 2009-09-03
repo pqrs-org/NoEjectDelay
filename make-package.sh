@@ -5,8 +5,6 @@ version=$(cat version)
 packagemaker=/Developer/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
 pkgName="NoEjectDelay-${version}.pkg"
 
-echo "char * const config_version = \"$version-Leopard\";" > src/kext/Leopard/version.hpp
-
 make clean build || exit $?
 
 # --------------------------------------------------
@@ -18,7 +16,7 @@ sudo mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/NoEjectDelay"
 sudo mkdir -p "pkgroot/$basedir"
-for ostype in Leopard; do
+for ostype in SnowLeopard; do
     sudo cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.kext"
 done
 sudo cp -R files/scripts "pkgroot/$basedir"
