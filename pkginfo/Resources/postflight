@@ -1,7 +1,11 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
-startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
-[ -f "$startup" ] && "$startup" quickstart
+#
+# Note: Actually we do not load.
+#       Because NoEjectDelay 2.0 has bug, the system will crash when we reload it.
+#
+#startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
+#[ -f "$startup" ] && "$startup" quickstart
 
 exit 0

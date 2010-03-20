@@ -3,11 +3,15 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 # ----------------------------------------
 # unload
-startup="/Library/org.pqrs/SetEjectDelay/scripts/startup.sh"
-[ -f "$startup" ] && "$startup" stop
-
-startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
-[ -f "$startup" ] && "$startup" stop
+#
+# Note: Actually we do not unload.
+#       Because NoEjectDelay 2.0 has bug, the system will crash when we reload it.
+#
+# startup="/Library/org.pqrs/SetEjectDelay/scripts/startup.sh"
+# [ -f "$startup" ] && "$startup" stop
+#
+# startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
+# [ -f "$startup" ] && "$startup" stop
 
 # ----------------------------------------
 # uninstall files
