@@ -64,6 +64,9 @@ void
 org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
 {
   IOLog("NoEjectDelay::stop\n");
+
+  if (notifier_hookKeyboard_) notifier_hookKeyboard_->remove();
+
   super::stop(provider);
 }
 
