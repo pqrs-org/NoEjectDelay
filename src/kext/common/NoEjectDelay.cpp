@@ -49,7 +49,7 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
   if (! res) { return res; }
 
   notifier_hookKeyboard_ = addMatchingNotification(gIOMatchedNotification,
-                                                   serviceMatching("IOHIKeyboard"),
+                                                   serviceMatching("IOHIDConsumer"),
                                                    org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard,
                                                    this, NULL, 0);
   if (notifier_hookKeyboard_ == NULL) {
@@ -71,33 +71,22 @@ org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
 }
 
 // ----------------------------------------
-int
-org_pqrs_driver_NoEjectDelay::setEjectDelay(IOHIKeyboard* kbd, int delay)
-{
-  if (! kbd) return -1;
-
-  const char* name = kbd->getName();
-  if (! name) return -1;
-  if (strcmp(name, "IOHIDConsumer") != 0) return -1;
-
-  IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, kbd);
-  if (! consumer) return -1;
-
-  IOHIDEventService* service = consumer->_provider;
-  if (! service) return -1;
-  if (! service->_reserved) return -1;
-
-  service->_reserved->ejectDelayMS = delay;
-  return 0;
-}
-
 bool
 org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
 {
-  IOLog("NoEjectDelay::notifierfunc_hookKeyboard\n");
+  // set Eject delay.
+  IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, newService);
+  if (! consumer) return true;
 
-  IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, newService);
+  IOLog("NoEjectDelay::notifierfunc_hookKeyboard name = %s\n", consumer->getName());
 
-  setEjectDelay(kbd, 5);
+  IOHIDEventService* service = consumer->_provider;
+  if (! service) return true;
+  if (! service->_reserved) return true;
+
+  const int DELAY = 5;
+  service->_reserved->ejectDelayMS = DELAY;
+
+  // ------------------------------------------------------------
   return true;
 }

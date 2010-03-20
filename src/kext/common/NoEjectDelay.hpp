@@ -18,7 +18,6 @@ public:
   virtual void stop(IOService* provider);
 
 private:
-  static int setEjectDelay(IOHIKeyboard* kbd, int delay);
   static bool notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier);
 
   IONotifier* notifier_hookKeyboard_;
