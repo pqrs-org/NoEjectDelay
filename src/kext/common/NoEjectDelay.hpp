@@ -11,17 +11,17 @@ class org_pqrs_driver_NoEjectDelay : public IOService
   OSDeclareDefaultStructors(org_pqrs_driver_NoEjectDelay);
 
 public:
-  virtual bool init(OSDictionary *dictionary = 0);
+  virtual bool init(OSDictionary* dictionary = 0);
   virtual void free(void);
-  virtual IOService *probe(IOService *provider, SInt32 *score);
-  virtual bool start(IOService *provider);
-  virtual void stop(IOService *provider);
+  virtual IOService* probe(IOService* provider, SInt32* score);
+  virtual bool start(IOService* provider);
+  virtual void stop(IOService* provider);
 
 private:
-  static int setEjectDelay(IOHIKeyboard *kbd, int delay);
-  static bool notifierfunc_hookKeyboard(void *target, void *refCon, IOService *newService, IONotifier* notifier);
+  static int setEjectDelay(IOHIKeyboard* kbd, int delay);
+  static bool notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier);
 
-  IONotifier *notifier_hookKeyboard;
+  IONotifier* notifier_hookKeyboard_;
 };
 
 #endif
