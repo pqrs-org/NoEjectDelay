@@ -9,4 +9,4 @@ System requirements
 -------------------
 Mac OS X 10.6 or higher.
 
-If you require NoEjectDelay for Mac OS X 10.4.x or 10.5.x, use NoEjectDelay 1.1.0.
+If you require NoEjectDelay for Mac OS X 10.5.x, use NoEjectDelay 1.1.0.
