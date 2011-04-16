@@ -1,12 +1,11 @@
 *.pkg/
 *.zip
 pkgroot/
-src/kext/*/*.xcodeproj/*.mode1
-src/kext/*/*.xcodeproj/*.mode1v3
-src/kext/*/*.xcodeproj/*.pbxuser
-src/kext/*/*.xcodeproj/xcuserdata/
-src/kext/*/*.xcodeproj/project.xcworkspace/xcuserdata/
+build/
+xcuserdata/
+*.mode1
+*.mode1v3
+*.pbxuser
 pkginfo/Info.plist
 src/kext/common/Info.plist
 src/kext/*/version.hpp
-src/kext/*/build/
