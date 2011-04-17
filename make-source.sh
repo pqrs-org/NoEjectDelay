@@ -9,11 +9,11 @@ rsync -a . $workdir
 
 # cleanup
 (cd $workdir; make clean)
-rm -rf $workdir/.hg*
+rm -rf $workdir/.git*
 find $workdir -name '.DS_Store' -print0 | xargs -0 rm -f
 
 # archive
-(cd $tmpdir; zip -r $name.zip $name)
+(cd $tmpdir; zip -r -9 --symlinks $name.zip $name)
 mv $tmpdir/$name.zip .
 chmod 644 $name.zip
 
