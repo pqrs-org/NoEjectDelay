@@ -16,7 +16,7 @@ sudo mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/NoEjectDelay"
 sudo mkdir -p "pkgroot/$basedir"
-for ostype in SnowLeopard; do
+for ostype in 10.6 10.7; do
     sudo cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.kext"
 done
 sudo cp -R files/scripts "pkgroot/$basedir"
