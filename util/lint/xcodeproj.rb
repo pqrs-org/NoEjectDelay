@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 $lines = []
-while l = gets
+while l = $stdin.gets
   $lines << l.strip
 end
 
@@ -15,6 +15,9 @@ def parseline(line)
 end
 
 def check_value(name, value)
+  return if ARGV.include?(name)
+  print "  check #{name}\n"
+
   isexist = false
   $lines.each do |l|
     (linename, linevalue) = parseline(l)
@@ -44,7 +47,7 @@ end
 
 check_value('ARCHS', '"$(ARCHS_STANDARD_32_64_BIT)"');
 check_value('objectVersion', '46')
-check_value('GCC_ENABLE_OBJC_GC', 'supported')
+check_value('GCC_ENABLE_OBJC_GC', 'unsupported')
 check_value('GCC_TREAT_WARNINGS_AS_ERRORS', 'YES')
 check_value('GCC_WARN_64_TO_32_BIT_CONVERSION', 'YES')
 check_value('GCC_WARN_ABOUT_MISSING_NEWLINE', 'YES')
@@ -59,6 +62,7 @@ check_value('GCC_WARN_UNUSED_FUNCTION', 'YES')
 check_value('GCC_WARN_UNUSED_LABEL', 'YES')
 check_value('GCC_WARN_UNUSED_VALUE', 'YES')
 check_value('GCC_WARN_UNUSED_VARIABLE', 'YES')
+check_value('RUN_CLANG_STATIC_ANALYZER', 'YES')
 check_value('SDKROOT', 'macosx10.6')
 
 check_noexist('GCC_WARN_PROTOTYPE_CONVERSION')
