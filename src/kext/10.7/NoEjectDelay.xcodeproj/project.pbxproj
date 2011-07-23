@@ -210,7 +210,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_KERNEL_DEVELOPMENT = YES;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -230,6 +230,7 @@
 				OTHER_CFLAGS = "-no-cpp-precomp";
 				OTHER_CPLUSPLUSFLAGS = "-no-cpp-precomp";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "include ../common /Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/**";
 				VALID_ARCHS = "i386 x86_64";
