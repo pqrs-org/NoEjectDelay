@@ -10,4 +10,8 @@
 #undef protected
 #undef private
 
+#define IOLOG_ERROR(...)  IOLog("NoEjectDelay --Error-- " __VA_ARGS__)
+#define IOLOG_INFO(...)   IOLog("NoEjectDelay --Info-- "  __VA_ARGS__)
+#define IOLOG_WARN(...)   IOLog("NoEjectDelay --Warn-- "  __VA_ARGS__)
+
 #endif

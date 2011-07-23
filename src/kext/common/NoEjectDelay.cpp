@@ -2,7 +2,7 @@
 
 #include "base.hpp"
 #include "NoEjectDelay.hpp"
-#include "config.hpp"
+#include "version.hpp"
 
 // ----------------------------------------------------------------------
 // http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/CPluPlusRuntime/chapter_2_section_3.html
@@ -17,20 +17,14 @@ OSDefineMetaClassAndStructors(org_pqrs_driver_NoEjectDelay, IOService)
 bool
 org_pqrs_driver_NoEjectDelay::init(OSDictionary* dict)
 {
-  IOLog("NoEjectDelay::init\n");
-
-  bool res = super::init(dict);
-  org_pqrs_NoEjectDelay::sysctl_register();
-
-  return res;
+  IOLOG_INFO("init %s\n", NoEjectDelay_version);
+  return super::init(dict);
 }
 
 void
 org_pqrs_driver_NoEjectDelay::free(void)
 {
-  IOLog("NoEjectDelay::free\n");
-
-  org_pqrs_NoEjectDelay::sysctl_unregister();
+  IOLOG_INFO("free\n");
   super::free();
 }
 
@@ -44,8 +38,9 @@ org_pqrs_driver_NoEjectDelay::probe(IOService* provider, SInt32* score)
 bool
 org_pqrs_driver_NoEjectDelay::start(IOService* provider)
 {
+  IOLOG_INFO("start\n");
+
   bool res = super::start(provider);
-  IOLog("NoEjectDelay::start\n");
   if (! res) { return res; }
 
   notifier_hookKeyboard_ = addMatchingNotification(gIOMatchedNotification,
@@ -53,7 +48,7 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
                                                    org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard,
                                                    this, NULL, 0);
   if (notifier_hookKeyboard_ == NULL) {
-    IOLog("[NoEjectDelay ERROR] addNotification(gIOMatchedNotification) Keyboard\n");
+    IOLOG_ERROR("addNotification(gIOMatchedNotification) Keyboard\n");
     return false;
   }
 
@@ -63,7 +58,7 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
 void
 org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
 {
-  IOLog("NoEjectDelay::stop\n");
+  IOLOG_INFO("stop\n");
 
   if (notifier_hookKeyboard_) notifier_hookKeyboard_->remove();
 
@@ -78,7 +73,7 @@ org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(void* target, void* refC
   IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, newService);
   if (! consumer) return true;
 
-  IOLog("NoEjectDelay::notifierfunc_hookKeyboard name = %s\n", consumer->getName());
+  //IOLOG_INFO("notifierfunc_hookKeyboard name = %s\n", consumer->getName());
 
   IOHIDEventService* service = consumer->_provider;
   if (! service) return true;
