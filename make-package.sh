@@ -27,7 +27,6 @@ cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall.sh"
 
 mkdir -p "pkgroot/Library"
 cp -R files/LaunchDaemons pkgroot/Library
-mkdir -p "pkgroot/Library/PreferencePanes"
 
 find pkgroot -type d -print0 | xargs -0 chmod 755
 find pkgroot -type f -print0 | xargs -0 chmod 644
