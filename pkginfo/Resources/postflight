@@ -1,7 +1,19 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
-#
+# ------------------------------------------------------------
+# set file permissions
+for f in \
+    /Library/LaunchDaemons/org.pqrs.NoEjectDelay.load.plist \
+    /Library/org.pqrs \
+    ; do
+    echo "set file permissions: $f"
+    sh /Library/org.pqrs/NoEjectDelay/extra/setpermissions.sh "$f"
+done
+
+# ------------------------------------------------------------
+# load kext
+
 # Note: Actually we do not load.
 #       Because NoEjectDelay 2.0 has bug, the system will crash when we reload it.
 #

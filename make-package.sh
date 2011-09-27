@@ -22,15 +22,28 @@ for ostype in 10.6 10.7; do
 done
 cp -R files/scripts "pkgroot/$basedir"
 
-mkdir -p "pkgroot/$basedir/extra"
-cp -R pkginfo/Resources/preflight "pkgroot/$basedir/extra/uninstall.sh"
+mkdir -p                            "pkgroot/$basedir/extra"
+cp -R pkginfo/Resources/preflight   "pkgroot/$basedir/extra/uninstall.sh"
+cp -R files/extra/setpermissions.sh "pkgroot/$basedir/extra/"
 
-mkdir -p "pkgroot/Library"
-cp -R files/LaunchDaemons pkgroot/Library
+mkdir -p                  "pkgroot/Library"
+cp -R files/LaunchDaemons "pkgroot/Library"
 
-find pkgroot -type d -print0 | xargs -0 chmod 755
-find pkgroot -type f -print0 | xargs -0 chmod 644
-find pkgroot -name '*.sh' -print0 | xargs -0 chmod 755
+# Setting file permissions.
+#
+# Note:
+#   If target files are already exists in system disk,
+#   PackageMaker uses their permissions.
+#
+#   For example:
+#     If /Library/org.pqrs permission is 0777 by accidental reasons,
+#     the directory permission will be 0777 in Archive.bom
+#     even if we set this directory permission to 0755 by setpermissions.sh.
+#
+#   Then, we need to repair file permissions in postflight script.
+#   Please also see postflight.
+#
+sh "files/extra/setpermissions.sh" pkgroot
 
 # --------------------------------------------------
 echo "Exec PackageMaker"
