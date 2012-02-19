@@ -2,7 +2,7 @@
 
 version=$(cat version)
 
-packagemaker=/Developer/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
+packagemaker=/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
 pkgName="NoEjectDelay.pkg"
 archiveName="NoEjectDelay-${version}.pkg.zip"
 
