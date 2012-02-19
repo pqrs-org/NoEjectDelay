@@ -126,7 +126,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "NoEjectDelay" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -209,10 +209,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_ENABLE_KERNEL_DEVELOPMENT = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -229,13 +228,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = "-no-cpp-precomp";
-				OTHER_CPLUSPLUSFLAGS = "-no-cpp-precomp";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "include ../common /Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/**";
+				USER_HEADER_SEARCH_PATHS = "include ../common /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Kernel.framework/Headers/IOKit/**";
 				VALID_ARCHS = "i386 x86_64";
+				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
 		};
