@@ -69,9 +69,3 @@ echo "Make Archive"
 zip -X -r $archiveName $pkgName
 rm -rf $pkgName
 chmod 644 $archiveName
-unzip $archiveName
-
-# --------------------------------------------------
-echo "Cleanup"
-rm -rf pkgroot
-make -C src/kext clean
