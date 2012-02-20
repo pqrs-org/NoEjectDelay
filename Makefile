@@ -6,10 +6,7 @@ build:
 	$(MAKE) -C src/kext
 
 clean:
-	$(MAKE) -C src/kext clean
-	rm -rf pkgroot
-	rm -rf *.pkg
-	rm -rf *.zip
+	git clean -f -x -d
 
 source:
 	./make-source.sh
