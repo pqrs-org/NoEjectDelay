@@ -32,7 +32,7 @@ Getting source code.
 Execute a following command in Terminal.app.
 
 <pre>
-git clone https://github.com/tekezo/NoEjectDelay.git
+git clone --depth 10 https://github.com/tekezo/NoEjectDelay.git
 </pre>
 
 ### Step2
