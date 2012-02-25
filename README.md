@@ -27,6 +27,7 @@ Please install PackageMaker.app in /Applications/Utilities.
 (PackageMaker.app is included in Auxiliary Tools for Xcode.)
 
 ### Step1: Getting source code
+
 Execute a following command in Terminal.app.
 
 <pre>
@@ -34,6 +35,7 @@ git clone --depth 10 https://github.com/tekezo/NoEjectDelay.git
 </pre>
 
 ### Step2: Building a package.
+
 Execute a following command in Terminal.app.
 
 <pre>
