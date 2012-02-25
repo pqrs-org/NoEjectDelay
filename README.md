@@ -34,7 +34,7 @@ Execute a following command in Terminal.app.
 git clone --depth 10 https://github.com/tekezo/NoEjectDelay.git
 </pre>
 
-### Step2: Building a package.
+### Step2: Building a package
 
 Execute a following command in Terminal.app.
 
