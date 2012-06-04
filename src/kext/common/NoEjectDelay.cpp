@@ -44,7 +44,7 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
   if (! res) { return res; }
 
   notifier_hookKeyboard_ = addMatchingNotification(gIOMatchedNotification,
-                                                   serviceMatching("IOHIDConsumer"),
+                                                   serviceMatching("IOHIKeyboard"),
                                                    org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard,
                                                    this, NULL, 0);
   if (notifier_hookKeyboard_ == NULL) {
@@ -70,17 +70,31 @@ bool
 org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
 {
   // set Eject delay.
-  IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, newService);
-  if (! consumer) return true;
+  {
+    IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, newService);
+    if (consumer) {
+      //IOLOG_INFO("notifierfunc_hookKeyboard consumer = %s\n", consumer->getName());
 
-  //IOLOG_INFO("notifierfunc_hookKeyboard name = %s\n", consumer->getName());
+      IOHIDEventService* service = consumer->_provider;
+      if (service && service->_reserved) {
+        const int DELAY = 5;
+        service->_reserved->ejectDelayMS = DELAY;
+      }
+    }
+  }
 
-  IOHIDEventService* service = consumer->_provider;
-  if (! service) return true;
-  if (! service->_reserved) return true;
+  // disable F12Eject
+  {
+    IOHIKeyboard* keyboard = OSDynamicCast(IOHIKeyboard, newService);
+    if (keyboard) {
+      //IOLOG_INFO("notifierfunc_hookKeyboard keyboard = %s\n", keyboard->getName());
 
-  const int DELAY = 5;
-  service->_reserved->ejectDelayMS = DELAY;
+      IOHIKeyboardMapper* mapper = keyboard->_keyMap;
+      if (mapper && mapper->_reserved) {
+        mapper->_reserved->supportsF12Eject = 0;
+      }
+    }
+  }
 
   // ------------------------------------------------------------
   return true;
