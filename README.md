@@ -43,5 +43,5 @@ cd NoEjectDelay
 make
 </pre>
 
-Then, NoEjectDelay-VERSION.pkg.zip has been created in the current directory.
+Then, NoEjectDelay-VERSION.dmg has been created in the current directory.
 It's a distributable package.
