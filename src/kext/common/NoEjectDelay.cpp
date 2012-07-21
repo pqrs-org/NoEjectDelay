@@ -66,6 +66,21 @@ org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
 }
 
 // ----------------------------------------
+namespace {
+  const char*
+  getProductPropertyCStringNoCopy(IOHIDevice* device)
+  {
+    const OSString* productname = OSDynamicCast(OSString, device->getProperty(kIOHIDProductKey));
+    if (productname) {
+      const char* pname = productname->getCStringNoCopy();
+      if (pname) {
+        return pname;
+      }
+    }
+    return NULL;
+  }
+}
+
 bool
 org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
 {
@@ -73,7 +88,13 @@ org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(void* target, void* refC
   {
     IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, newService);
     if (consumer) {
-      //IOLOG_INFO("notifierfunc_hookKeyboard consumer = %s\n", consumer->getName());
+      {
+        const char* name = consumer->getName();
+        const char* pname = getProductPropertyCStringNoCopy(consumer);
+        if (name && pname) {
+          IOLOG_INFO("notifierfunc_hookKeyboard consumer: %s (%s)\n", pname, name);
+        }
+      }
 
       IOHIDEventService* service = consumer->_provider;
       if (service && service->_reserved) {
@@ -87,7 +108,13 @@ org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(void* target, void* refC
   {
     IOHIKeyboard* keyboard = OSDynamicCast(IOHIKeyboard, newService);
     if (keyboard) {
-      //IOLOG_INFO("notifierfunc_hookKeyboard keyboard = %s\n", keyboard->getName());
+      {
+        const char* name = keyboard->getName();
+        const char* pname = getProductPropertyCStringNoCopy(keyboard);
+        if (name && pname) {
+          IOLOG_INFO("notifierfunc_hookKeyboard keyboard: %s (%s)\n", pname, name);
+        }
+      }
 
       IOHIKeyboardMapper* mapper = keyboard->_keyMap;
       if (mapper && mapper->_reserved) {
