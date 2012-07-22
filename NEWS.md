@@ -1,4 +1,4 @@
-Changes since 3.4.0
+Version 3.5.0
 -------------------
 
 * Added "Disable F12Eject" feature.
