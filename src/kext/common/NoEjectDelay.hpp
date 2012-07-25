@@ -30,6 +30,7 @@ private:
 
   enum {
     MAXNUM_DEVICES = 16,
+    TIMER_INTERVAL_MS = 3000,
   };
   IOService* devices_[MAXNUM_DEVICES];
 };

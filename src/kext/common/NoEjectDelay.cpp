@@ -84,7 +84,7 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
 
   if (workLoop_->addEventSource(timerEventSource_) != kIOReturnSuccess) return false;
 
-  timerEventSource_->setTimeoutMS(3000);
+  timerEventSource_->setTimeoutMS(TIMER_INTERVAL_MS);
 
   // ----------------------------------------
   return res;
@@ -229,9 +229,6 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
     }
   }
 
-  enum {
-    TIMER_INTERVAL_MS = 3000,
-  };
   if (sender) {
     sender->setTimeoutMS(TIMER_INTERVAL_MS);
   }
