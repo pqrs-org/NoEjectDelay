@@ -10,6 +10,8 @@
 		340442AF0D124729005721A2 /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 340442AE0D124729005721A2 /* version.hpp */; };
 		346D0F640DC9603E00771769 /* NoEjectDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346D0F620DC9603E00771769 /* NoEjectDelay.cpp */; };
 		346D0F650DC9603E00771769 /* NoEjectDelay.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346D0F630DC9603E00771769 /* NoEjectDelay.hpp */; };
+		34D4612F15BFBA4C00FE4B28 /* GlobalLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4612D15BFBA4C00FE4B28 /* GlobalLock.cpp */; };
+		34D4613015BFBA4C00FE4B28 /* GlobalLock.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D4612E15BFBA4C00FE4B28 /* GlobalLock.hpp */; };
 		34DA85F60D06E4CB00AE69E6 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85EF0D06E4CB00AE69E6 /* base.hpp */; };
 		34DA86010D06E4EA00AE69E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34DA85FE0D06E4EA00AE69E6 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
@@ -19,6 +21,8 @@
 		340442AE0D124729005721A2 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		346D0F620DC9603E00771769 /* NoEjectDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NoEjectDelay.cpp; path = ../common/NoEjectDelay.cpp; sourceTree = SOURCE_ROOT; };
 		346D0F630DC9603E00771769 /* NoEjectDelay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NoEjectDelay.hpp; path = ../common/NoEjectDelay.hpp; sourceTree = SOURCE_ROOT; };
+		34D4612D15BFBA4C00FE4B28 /* GlobalLock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalLock.cpp; path = ../common/GlobalLock.cpp; sourceTree = "<group>"; };
+		34D4612E15BFBA4C00FE4B28 /* GlobalLock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GlobalLock.hpp; path = ../common/GlobalLock.hpp; sourceTree = "<group>"; };
 		34DA85EF0D06E4CB00AE69E6 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = base.hpp; path = ../common/base.hpp; sourceTree = SOURCE_ROOT; };
 		34DA85FF0D06E4EA00AE69E6 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = InfoPlist.strings; sourceTree = "<group>"; };
 		34DA86000D06E4EA00AE69E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../common/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -67,6 +71,8 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				34D4612D15BFBA4C00FE4B28 /* GlobalLock.cpp */,
+				34D4612E15BFBA4C00FE4B28 /* GlobalLock.hpp */,
 				346D0F620DC9603E00771769 /* NoEjectDelay.cpp */,
 				346D0F630DC9603E00771769 /* NoEjectDelay.hpp */,
 				340442AE0D124729005721A2 /* version.hpp */,
@@ -94,6 +100,7 @@
 				34DA85F60D06E4CB00AE69E6 /* base.hpp in Headers */,
 				340442AF0D124729005721A2 /* version.hpp in Headers */,
 				346D0F650DC9603E00771769 /* NoEjectDelay.hpp in Headers */,
+				34D4613015BFBA4C00FE4B28 /* GlobalLock.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				346D0F640DC9603E00771769 /* NoEjectDelay.cpp in Sources */,
+				34D4612F15BFBA4C00FE4B28 /* GlobalLock.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

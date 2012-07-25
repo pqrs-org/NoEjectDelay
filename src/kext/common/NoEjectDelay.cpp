@@ -3,6 +3,7 @@
 #include "base.hpp"
 #include "NoEjectDelay.hpp"
 #include "version.hpp"
+#include "GlobalLock.hpp"
 
 // ----------------------------------------------------------------------
 // http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/CPluPlusRuntime/chapter_2_section_3.html
@@ -18,6 +19,15 @@ bool
 org_pqrs_driver_NoEjectDelay::init(OSDictionary* dict)
 {
   IOLOG_INFO("init %s\n", NoEjectDelay_version);
+
+  notifier_hookKeyboard_ = NULL;
+  notifier_unhookKeyboard_ = NULL;
+  workLoop_ = NULL;
+  timerEventSource_ = NULL;
+  for (int i = 0; i < MAXNUM_DEVICES; ++i) {
+    devices_[i] = NULL;
+  }
+
   return super::init(dict);
 }
 
@@ -43,15 +53,40 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
   bool res = super::start(provider);
   if (! res) { return res; }
 
+  // ----------------------------------------
+  org_pqrs_NoEjectDelay::GlobalLock::initialize();
+
+  // ----------------------------------------
   notifier_hookKeyboard_ = addMatchingNotification(gIOMatchedNotification,
                                                    serviceMatching("IOHIKeyboard"),
-                                                   org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard,
+                                                   org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback,
                                                    this, NULL, 0);
   if (notifier_hookKeyboard_ == NULL) {
     IOLOG_ERROR("addNotification(gIOMatchedNotification) Keyboard\n");
     return false;
   }
 
+  notifier_unhookKeyboard_ = addMatchingNotification(gIOTerminatedNotification,
+                                                     serviceMatching("IOHIKeyboard"),
+                                                     org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOTerminatedNotification_callback,
+                                                     this, NULL, 0);
+  if (notifier_unhookKeyboard_ == NULL) {
+    IOLOG_ERROR("initialize_notification notifier_unhookKeyboard_ == NULL\n");
+    return false;
+  }
+
+  // ----------------------------------------
+  workLoop_ = IOWorkLoop::workLoop();
+  if (! workLoop_) return false;
+
+  timerEventSource_ = IOTimerEventSource::timerEventSource(this, timer_callback);
+  if (! timerEventSource_) return false;
+
+  if (workLoop_->addEventSource(timerEventSource_) != kIOReturnSuccess) return false;
+
+  timerEventSource_->setTimeoutMS(3000);
+
+  // ----------------------------------------
   return res;
 }
 
@@ -60,7 +95,27 @@ org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
 {
   IOLOG_INFO("stop\n");
 
-  if (notifier_hookKeyboard_) notifier_hookKeyboard_->remove();
+  // ----------------------------------------
+  org_pqrs_NoEjectDelay::GlobalLock::terminate();
+
+  // ----------------------------------------
+  if (timerEventSource_) {
+    if (workLoop_) {
+      workLoop_->removeEventSource(timerEventSource_);
+    }
+
+    timerEventSource_->release();
+    timerEventSource_ = NULL;
+  }
+
+  if (workLoop_) {
+    workLoop_->release();
+    workLoop_ = NULL;
+  }
+
+  // ----------------------------------------
+  if (notifier_hookKeyboard_)   { notifier_hookKeyboard_->remove(); }
+  if (notifier_unhookKeyboard_) { notifier_unhookKeyboard_->remove(); }
 
   super::stop(provider);
 }
@@ -68,61 +123,116 @@ org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
 // ----------------------------------------
 namespace {
   const char*
-  getProductPropertyCStringNoCopy(IOHIDevice* device)
+  getProductPropertyCStringNoCopy(IOService* service)
   {
-    const OSString* productname = OSDynamicCast(OSString, device->getProperty(kIOHIDProductKey));
-    if (productname) {
-      const char* pname = productname->getCStringNoCopy();
-      if (pname) {
-        return pname;
-      }
-    }
-    return NULL;
+    const OSString* productname = OSDynamicCast(OSString, service->getProperty(kIOHIDProductKey));
+    if (! productname) return NULL;
+
+    const char* pname = productname->getCStringNoCopy();
+    if (! pname) return NULL;
+
+    return pname;
   }
 }
 
+// ----------------------------------------
 bool
-org_pqrs_driver_NoEjectDelay::notifierfunc_hookKeyboard(void* target, void* refCon, IOService* newService, IONotifier* notifier)
+org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier)
 {
-  // set Eject delay.
-  {
-    IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, newService);
-    if (consumer) {
-      {
-        const char* name = consumer->getName();
-        const char* pname = getProductPropertyCStringNoCopy(consumer);
-        if (name && pname) {
-          IOLOG_INFO("notifierfunc_hookKeyboard consumer: %s (%s)\n", pname, name);
-        }
-      }
+  org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
+  if (! lk) return false;
 
-      IOHIDEventService* service = consumer->_provider;
-      if (service && service->_reserved) {
-        const int DELAY = 5;
-        service->_reserved->ejectDelayMS = DELAY;
-      }
+  // ----------------------------------------
+  org_pqrs_driver_NoEjectDelay* self = reinterpret_cast<org_pqrs_driver_NoEjectDelay*>(target);
+  if (! self) return false;
+
+  // ----------------------------------------
+  const char* name = newService->getName();
+  const char* pname = getProductPropertyCStringNoCopy(newService);
+  if (name && pname) {
+    IOLOG_INFO("device: %s (%s)\n", pname, name);
+  }
+
+  // ----------------------------------------
+  for (int i = 0; i < MAXNUM_DEVICES; ++i) {
+    if (! self->devices_[i]) {
+      self->devices_[i] = newService;
+      return true;
     }
   }
 
-  // disable F12Eject
-  {
-    IOHIKeyboard* keyboard = OSDynamicCast(IOHIKeyboard, newService);
-    if (keyboard) {
-      {
-        const char* name = keyboard->getName();
-        const char* pname = getProductPropertyCStringNoCopy(keyboard);
-        if (name && pname) {
-          IOLOG_INFO("notifierfunc_hookKeyboard keyboard: %s (%s)\n", pname, name);
-        }
-      }
-
-      IOHIKeyboardMapper* mapper = keyboard->_keyMap;
-      if (mapper && mapper->_reserved) {
-        mapper->_reserved->supportsF12Eject = 0;
-      }
-    }
-  }
-
-  // ------------------------------------------------------------
+  IOLOG_WARN("There is no space for the new device. Please increase MAXNUM_DEVICES.\n");
   return true;
+}
+
+bool
+org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOTerminatedNotification_callback(void* target,
+                                                                              void* refCon,
+                                                                              IOService* newService,
+                                                                              IONotifier* notifier)
+{
+  org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
+  if (! lk) return false;
+
+  // ----------------------------------------
+  org_pqrs_driver_NoEjectDelay* self = reinterpret_cast<org_pqrs_driver_NoEjectDelay*>(target);
+  if (! self) return false;
+
+  // ----------------------------------------
+  for (int i = 0; i < MAXNUM_DEVICES; ++i) {
+    if (self->devices_[i] == newService) {
+      self->devices_[i] = NULL;
+    }
+  }
+  return true;
+}
+
+
+void
+org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSource* sender)
+{
+  org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
+  if (! lk) return;
+
+  // ----------------------------------------
+  org_pqrs_driver_NoEjectDelay* self = OSDynamicCast(org_pqrs_driver_NoEjectDelay, target);
+  if (! self) return;
+
+  // ----------------------------------------
+  // supportsF12Eject becomes true when user logged in even if supportsF12Eject is false.
+  // Therefore, we need to overwrite this value from timer.
+
+  for (int i = 0; i < MAXNUM_DEVICES; ++i) {
+    if (! self->devices_[i]) continue;
+
+    // set Eject delay.
+    {
+      IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, self->devices_[i]);
+      if (consumer) {
+        IOHIDEventService* service = consumer->_provider;
+        if (service && service->_reserved) {
+          const int DELAY = 5;
+          service->_reserved->ejectDelayMS = DELAY;
+        }
+      }
+    }
+
+    // disable F12Eject
+    {
+      IOHIKeyboard* keyboard = OSDynamicCast(IOHIKeyboard, self->devices_[i]);
+      if (keyboard) {
+        IOHIKeyboardMapper* mapper = keyboard->_keyMap;
+        if (mapper && mapper->_reserved) {
+          mapper->_reserved->supportsF12Eject = 0;
+        }
+      }
+    }
+  }
+
+  enum {
+    TIMER_INTERVAL_MS = 3000,
+  };
+  if (sender) {
+    sender->setTimeoutMS(TIMER_INTERVAL_MS);
+  }
 }
