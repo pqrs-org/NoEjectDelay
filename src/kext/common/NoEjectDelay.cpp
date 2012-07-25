@@ -62,7 +62,7 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
                                                    org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback,
                                                    this, NULL, 0);
   if (notifier_hookKeyboard_ == NULL) {
-    IOLOG_ERROR("addNotification(gIOMatchedNotification) Keyboard\n");
+    IOLOG_ERROR("initialize_notification notifier_hookKeyboard_ == NULL\n");
     return false;
   }
 
