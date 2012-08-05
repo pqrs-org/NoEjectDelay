@@ -6,11 +6,11 @@ basedir="/Library/org.pqrs/NoEjectDelay"
 # --------------------
 uname=`uname -r`
 case "${uname%%.*}" in
-    10)
-        kextfile="$basedir/NoEjectDelay.10.6.kext"
-        ;;
     11)
         kextfile="$basedir/NoEjectDelay.10.7.kext"
+        ;;
+    12)
+        kextfile="$basedir/NoEjectDelay.10.8.kext"
         ;;
 esac
 

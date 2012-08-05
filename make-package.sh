@@ -17,7 +17,7 @@ mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/NoEjectDelay"
 mkdir -p "pkgroot/$basedir"
-for ostype in 10.6 10.7; do
+for ostype in 10.7 10.8; do
     cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.kext"
 done
 cp -R files/scripts "pkgroot/$basedir"
@@ -52,10 +52,11 @@ rm -rf $archiveName/$pkgName
 mkdir $archiveName
 
 # Note: Don't add --no-recommend option.
-# It breaks /Library permission.
+# It might break /Library permission.
 # (It overwrites /Library permission with pkgroot/Library permission.)
 # - Mac OS X 10.6: /Library is 1775
 # - Mac OS X 10.7: /Library is 0755
+# - Mac OS X 10.8: /Library is 40755
 $packagemaker \
     --root pkgroot \
     --info pkginfo/Info.plist \
