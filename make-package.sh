@@ -63,6 +63,7 @@ $packagemaker \
     --resources pkginfo/Resources \
     --title "NoEjectDelay $version" \
     --no-relocate \
+    --discard-forks \
     --out $archiveName/$pkgName
 
 # --------------------------------------------------
