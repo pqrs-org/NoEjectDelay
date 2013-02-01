@@ -9,6 +9,7 @@ for f in \
     ; do
     echo "set file permissions: $f"
     sh /Library/org.pqrs/NoEjectDelay/extra/setpermissions.sh "$f"
+    chown -Rh root:wheel "$f"
 done
 
 # ------------------------------------------------------------

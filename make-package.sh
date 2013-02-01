@@ -44,6 +44,12 @@ cp -R files/LaunchDaemons "pkgroot/Library"
 #   Please also see postflight.
 #
 sh "files/extra/setpermissions.sh" pkgroot
+sh "files/extra/setpermissions.sh" pkginfo
+chmod 755 \
+    pkginfo/Resources/InstallationCheck \
+    pkginfo/Resources/postflight \
+    pkginfo/Resources/preflight \
+    pkginfo/fixbom.rb
 
 # --------------------------------------------------
 echo "Exec PackageMaker"
@@ -65,6 +71,10 @@ $packagemaker \
     --no-relocate \
     --discard-forks \
     --out $archiveName/$pkgName
+
+# --------------------------------------------------
+echo "Fix Archive.bom"
+ruby pkginfo/fixbom.rb $archiveName/$pkgName/Contents/Archive.bom pkgroot/
 
 # --------------------------------------------------
 echo "Make Archive"
