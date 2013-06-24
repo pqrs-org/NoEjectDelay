@@ -5,6 +5,13 @@ NoEjectDelay clears the eject key delay.
 Use this software when you change the eject key behavior in KeyRemap4MacBook.
 
 
+Web pages
+---------
+
+* master: https://pqrs.org/macosx/keyremap4macbook/noejectdelay.html
+* backup: http://tekezo.github.io/pqrs.org/
+
+
 System requirements
 -------------------
 
