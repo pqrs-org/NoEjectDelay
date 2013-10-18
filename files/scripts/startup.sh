@@ -6,10 +6,11 @@ basedir="/Library/org.pqrs/NoEjectDelay"
 # --------------------
 uname=`uname -r`
 case "${uname%%.*}" in
-    11)
-        kextfile="$basedir/NoEjectDelay.10.7.kext"
-        ;;
     12)
+        kextfile="$basedir/NoEjectDelay.10.8.kext"
+        ;;
+    13)
+        # Experimental: Use 10.8 kext on OS X 10.9 until source code of IOHIDFamily is released from Apple.
         kextfile="$basedir/NoEjectDelay.10.8.kext"
         ;;
 esac
