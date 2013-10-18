@@ -15,10 +15,11 @@ Web pages
 System requirements
 -------------------
 
-Mac OS X 10.7 or higher.
+Mac OS X 10.8 or higher.
 
 * If you require NoEjectDelay for Mac OS X 10.5, use NoEjectDelay 1.1.0.
 * If you require NoEjectDelay for Mac OS X 10.6, use NoEjectDelay 3.6.0.
+* If you require NoEjectDelay for Mac OS X 10.7, use NoEjectDelay 4.1.0.
 
 
 How to build
@@ -27,7 +28,7 @@ How to build
 Requirements:
 
 * OS X 10.8
-* Xcode 4.4+
+* Xcode 5.0+
 * Command Line Tools for Xcode
 * Auxiliary Tools for Xcode
 
