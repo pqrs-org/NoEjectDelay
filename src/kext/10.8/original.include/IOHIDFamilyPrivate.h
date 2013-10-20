@@ -23,8 +23,8 @@
 #ifndef _IOKIT_HID_IOHIDFAMILYPRIVATE_H
 #define _IOKIT_HID_IOHIDFAMILYPRIVATE_H
 
-#include <IOKit/hid/IOHIDKeys.h>
-#include <IOKit/hid/IOHIDDevice.h>
+#include "IOHIDKeys.h"
+#include "IOHIDDevice.h"
 
 __BEGIN_DECLS
 

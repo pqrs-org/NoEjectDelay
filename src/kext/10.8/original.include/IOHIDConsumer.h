@@ -31,9 +31,9 @@
 // HID system includes.
 #include <IOKit/hidsystem/IOHIDDescriptorParser.h>
 #include <IOKit/hidsystem/IOHIDShared.h>
-#include <IOKit/hidsystem/IOHIKeyboard.h>
+#include "IOHIKeyboard.h"
 #include "IOHIDKeyboard.h"
-#include <IOKit/hidevent/IOHIDEventService.h>
+#include "IOHIDEventService.h"
 
 // extra includes.
 #include <libkern/OSByteOrder.h>

@@ -242,7 +242,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx10.8;
-				USER_HEADER_SEARCH_PATHS = "include ../common /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Kernel.framework/Headers/IOKit/**";
+				USER_HEADER_SEARCH_PATHS = "include ../common";
 			};
 			name = Release;
 		};
