@@ -6,7 +6,7 @@
 #define private public
 #include <IOKit/hidsystem/IOHIKeyboard.h>
 #include "IOHIDConsumer.h"
-#include "IOHIDEventService.h"
+#include <IOKit/hidevent/IOHIDEventService.h>
 #undef protected
 #undef private
 
