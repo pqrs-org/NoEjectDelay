@@ -19,8 +19,14 @@ mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/NoEjectDelay"
 mkdir -p "pkgroot/$basedir"
-for ostype in 10.7 10.8; do
-    cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.kext"
+for ostype in 10.8 10.9; do
+    if [ $ostype == "10.8" ]; then
+        # We must not sign kext for OS X 10.8 or prior.
+        cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.kext"
+    else
+        # We should sign kext after OS X 10.9.
+        cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.signed.kext"
+    fi
 done
 cp -R files/scripts "pkgroot/$basedir"
 
@@ -30,6 +36,10 @@ cp -R files/extra/setpermissions.sh "pkgroot/$basedir/extra/"
 
 mkdir -p                  "pkgroot/Library"
 cp -R files/LaunchDaemons "pkgroot/Library"
+
+# Sign with Developer ID
+bash files/extra/codesign.sh pkgroot
+bash files/extra/codesign-kext.sh pkgroot
 
 # Setting file permissions.
 #
@@ -77,6 +87,10 @@ $packagemaker \
 # --------------------------------------------------
 echo "Fix Archive.bom"
 ruby pkginfo/fixbom.rb $archiveName/$pkgName/Contents/Archive.bom pkgroot/
+
+# --------------------------------------------------
+echo "Sign with Developer ID"
+bash files/extra/codesign-pkg.sh $archiveName/$pkgName
 
 # --------------------------------------------------
 echo "Make Archive"

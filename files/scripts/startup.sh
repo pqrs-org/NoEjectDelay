@@ -10,8 +10,7 @@ case "${uname%%.*}" in
         kextfile="$basedir/NoEjectDelay.10.8.kext"
         ;;
     13)
-        # Experimental: Use 10.8 kext on OS X 10.9 until source code of IOHIDFamily is released from Apple.
-        kextfile="$basedir/NoEjectDelay.10.8.kext"
+        kextfile="$basedir/NoEjectDelay.10.9.signed.kext"
         ;;
 esac
 

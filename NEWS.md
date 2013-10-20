@@ -1,3 +1,9 @@
+Since Version 4.1.0
+-------------------
+
+* Experimental support for OS X 10.9.
+* Signed with Developer ID.
+
 Version 4.1.0
 -------------
 
