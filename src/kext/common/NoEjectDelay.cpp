@@ -212,7 +212,11 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
         IOHIDEventService* service = consumer->_provider;
         if (service && service->_reserved) {
           const int DELAY = 5;
+#ifdef __MAC_10_9
+          (service->_reserved->keyboard).eject.delayMS = DELAY;
+#else
           service->_reserved->ejectDelayMS = DELAY;
+#endif
         }
       }
     }
