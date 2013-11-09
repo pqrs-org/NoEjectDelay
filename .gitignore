@@ -9,5 +9,6 @@ xcuserdata/
 *.mode1v3
 *.pbxuser
 pkginfo/Info.plist
+pkginfo/Distribution.xml
 src/kext/common/Info.plist
 src/kext/*/version.hpp
