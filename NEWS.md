@@ -1,3 +1,9 @@
+Version 5.1.0
+-------------
+
+* Signed kext with Developer ID.
+* Updated installer.
+
 Version 5.0.0
 -------------
 
