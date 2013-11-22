@@ -15,10 +15,7 @@ done
 # ------------------------------------------------------------
 # load kext
 
-# Note: Actually we do not load.
-#       Because NoEjectDelay 2.0 has bug, the system will crash when we reload it.
-#
-#startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
-#[ -f "$startup" ] && "$startup" quickstart
+startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
+[ -f "$startup" ] && "$startup" start
 
 exit 0

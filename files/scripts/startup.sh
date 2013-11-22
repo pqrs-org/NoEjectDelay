@@ -24,12 +24,6 @@ argument="$1"
 case "$argument" in
     start)
         echo "Starting NoEjectDelay"
-        sleep 10 # wait for avoid kext loading collision.
-        kextload "$kextfile"
-        ;;
-
-    quickstart)
-        echo "Starting NoEjectDelay"
         kextload "$kextfile"
         ;;
 

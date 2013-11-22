@@ -1,3 +1,9 @@
+Since 5.2.0
+-----------
+
+* v5.2.1: <br />
+  NoEjectDelay no longer requires system restart at installing or upgrading.
+
 Version 5.2.0
 -------------
 
