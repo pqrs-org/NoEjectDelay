@@ -1,9 +1,17 @@
 // -*- Mode: c++; indent-tabs-mode: nil; -*-
 
-#include "base.hpp"
+#define protected public // A hack for access private member of IOHIKeyboard
+#define private public
+#include <IOKit/hidsystem/IOHIKeyboard.h>
+#include "IOHIDConsumer.h"
+#undef protected
+#undef private
+#include <IOKit/IOLib.h>
+
+#include "GlobalLock.hpp"
+#include "IOLogWrapper.hpp"
 #include "NoEjectDelay.hpp"
 #include "version.hpp"
-#include "GlobalLock.hpp"
 
 // ----------------------------------------------------------------------
 // http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/CPluPlusRuntime/chapter_2_section_3.html

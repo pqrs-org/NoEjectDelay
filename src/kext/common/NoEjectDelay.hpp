@@ -3,7 +3,7 @@
 #ifndef _NoEjectDelay_h
 #define _NoEjectDelay_h
 
-#include "base.hpp"
+#include <IOKit/IOService.h>
 
 // http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptIOKit/hello_iokit.html#//apple_ref/doc/uid/20002366-CIHECHHE
 class org_pqrs_driver_NoEjectDelay : public IOService

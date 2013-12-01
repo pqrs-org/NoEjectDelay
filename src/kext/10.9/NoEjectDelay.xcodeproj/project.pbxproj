@@ -12,7 +12,8 @@
 		346D0F650DC9603E00771769 /* NoEjectDelay.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346D0F630DC9603E00771769 /* NoEjectDelay.hpp */; };
 		3498173515BF892400F29240 /* GlobalLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3498173315BF892400F29240 /* GlobalLock.cpp */; };
 		3498173615BF892400F29240 /* GlobalLock.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3498173415BF892400F29240 /* GlobalLock.hpp */; };
-		34DA85F60D06E4CB00AE69E6 /* base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DA85EF0D06E4CB00AE69E6 /* base.hpp */; };
+		34D0074E184B7C4800C633BB /* IOLogWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D0074C184B7C4800C633BB /* IOLogWrapper.cpp */; };
+		34D0074F184B7C4800C633BB /* IOLogWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D0074D184B7C4800C633BB /* IOLogWrapper.hpp */; };
 		34DA86010D06E4EA00AE69E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34DA85FE0D06E4EA00AE69E6 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +24,8 @@
 		346D0F630DC9603E00771769 /* NoEjectDelay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NoEjectDelay.hpp; path = ../common/NoEjectDelay.hpp; sourceTree = SOURCE_ROOT; };
 		3498173315BF892400F29240 /* GlobalLock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalLock.cpp; path = ../common/GlobalLock.cpp; sourceTree = "<group>"; };
 		3498173415BF892400F29240 /* GlobalLock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GlobalLock.hpp; path = ../common/GlobalLock.hpp; sourceTree = "<group>"; };
-		34DA85EF0D06E4CB00AE69E6 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = base.hpp; path = ../common/base.hpp; sourceTree = SOURCE_ROOT; };
+		34D0074C184B7C4800C633BB /* IOLogWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IOLogWrapper.cpp; path = ../common/IOLogWrapper.cpp; sourceTree = "<group>"; };
+		34D0074D184B7C4800C633BB /* IOLogWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IOLogWrapper.hpp; path = ../common/IOLogWrapper.hpp; sourceTree = "<group>"; };
 		34DA85FF0D06E4EA00AE69E6 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = InfoPlist.strings; sourceTree = "<group>"; };
 		34DA86000D06E4EA00AE69E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../common/Info.plist; sourceTree = SOURCE_ROOT; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -73,10 +75,11 @@
 			children = (
 				3498173315BF892400F29240 /* GlobalLock.cpp */,
 				3498173415BF892400F29240 /* GlobalLock.hpp */,
+				34D0074C184B7C4800C633BB /* IOLogWrapper.cpp */,
+				34D0074D184B7C4800C633BB /* IOLogWrapper.hpp */,
 				346D0F620DC9603E00771769 /* NoEjectDelay.cpp */,
 				346D0F630DC9603E00771769 /* NoEjectDelay.hpp */,
 				340442AE0D124729005721A2 /* version.hpp */,
-				34DA85EF0D06E4CB00AE69E6 /* base.hpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -97,8 +100,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34DA85F60D06E4CB00AE69E6 /* base.hpp in Headers */,
 				340442AF0D124729005721A2 /* version.hpp in Headers */,
+				34D0074F184B7C4800C633BB /* IOLogWrapper.hpp in Headers */,
 				346D0F650DC9603E00771769 /* NoEjectDelay.hpp in Headers */,
 				3498173615BF892400F29240 /* GlobalLock.hpp in Headers */,
 			);
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D0074E184B7C4800C633BB /* IOLogWrapper.cpp in Sources */,
 				346D0F640DC9603E00771769 /* NoEjectDelay.cpp in Sources */,
 				3498173515BF892400F29240 /* GlobalLock.cpp in Sources */,
 			);
