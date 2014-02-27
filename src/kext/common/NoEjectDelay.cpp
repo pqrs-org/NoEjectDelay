@@ -217,24 +217,21 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
 
     // set Eject delay.
     {
-      IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, self->devices_[i]);
-      if (consumer) {
-        // We are using private header of IOHIDConsumer.
-        // So, we need to check "consumer->_provider is IOHIDEventService" by OSDynamicCast.
-        IOHIDEventService* service = OSDynamicCast(IOHIDEventService, consumer->_provider);
-        if (service && service->_reserved) {
-          const int DELAY = 5;
-#ifdef __MAC_10_9
-          if ((service->_reserved->keyboard).eject.delayMS != DELAY) {
-            IOLOG_INFO("Set eject.delayMS\n");
-            (service->_reserved->keyboard).eject.delayMS = DELAY;
-          }
-#else
-          if (service->_reserved->ejectDelayMS != DELAY) {
-            IOLOG_INFO("Set ejectDelayMS\n");
-            service->_reserved->ejectDelayMS = DELAY;
-          }
-#endif
+      {
+        IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, self->devices_[i]);
+        if (consumer) {
+          // We are using private header of IOHIDConsumer.
+          // So, we need to check "consumer->_provider is IOHIDEventService" by OSDynamicCast.
+          IOHIDEventService* service = OSDynamicCast(IOHIDEventService, consumer->_provider);
+          setEjectDelayMS(service);
+        }
+      }
+      {
+        IOHIDKeyboard* keyboard = OSDynamicCast(IOHIDKeyboard, self->devices_[i]);
+        if (keyboard) {
+          // Like above, we need to check _provider.
+          IOHIDEventService* service = OSDynamicCast(IOHIDEventService, keyboard->_provider);
+          setEjectDelayMS(service);
         }
       }
     }
@@ -257,4 +254,24 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
   if (sender) {
     sender->setTimeoutMS(TIMER_INTERVAL_MS);
   }
+}
+
+void
+org_pqrs_driver_NoEjectDelay::setEjectDelayMS(IOHIDEventService* service)
+{
+  if (! service) return;
+  if (! service->_reserved) return;
+
+  const int DELAY = 5;
+#ifdef __MAC_10_9
+  if ((service->_reserved->keyboard).eject.delayMS != DELAY) {
+    IOLOG_INFO("Set eject.delayMS\n");
+    (service->_reserved->keyboard).eject.delayMS = DELAY;
+  }
+#else
+  if (service->_reserved->ejectDelayMS != DELAY) {
+    IOLOG_INFO("Set ejectDelayMS\n");
+    service->_reserved->ejectDelayMS = DELAY;
+  }
+#endif
 }

@@ -21,6 +21,7 @@ private:
   static bool IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier);
   static bool IOHIKeyboard_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier);
   static void timer_callback(OSObject* target, IOTimerEventSource* sender);
+  static void setEjectDelayMS(IOHIDEventService* service);
 
   IONotifier* notifier_hookKeyboard_;
   IONotifier* notifier_unhookKeyboard_;
