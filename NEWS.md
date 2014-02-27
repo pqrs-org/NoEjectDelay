@@ -1,3 +1,9 @@
+Version 5.4.0
+-------------
+
+* Fixed an issue:
+    * NoEjectDelay causes kernel panic on OS X 10.9.2.
+
 Version 5.3.0
 -------------
 
