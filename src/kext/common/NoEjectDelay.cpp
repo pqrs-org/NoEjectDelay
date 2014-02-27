@@ -154,6 +154,8 @@ org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback(void*
   org_pqrs_driver_NoEjectDelay* self = reinterpret_cast<org_pqrs_driver_NoEjectDelay*>(target);
   if (! self) return false;
 
+  if (! newService) return false;
+
   // ----------------------------------------
   const char* name = newService->getName();
   const char* pname = getProductPropertyCStringNoCopy(newService);
@@ -217,13 +219,21 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
     {
       IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, self->devices_[i]);
       if (consumer) {
-        IOHIDEventService* service = consumer->_provider;
+        // We are using private header of IOHIDConsumer.
+        // So, we need to check "consumer->_provider is IOHIDEventService" by OSDynamicCast.
+        IOHIDEventService* service = OSDynamicCast(IOHIDEventService, consumer->_provider);
         if (service && service->_reserved) {
           const int DELAY = 5;
 #ifdef __MAC_10_9
-          (service->_reserved->keyboard).eject.delayMS = DELAY;
+          if ((service->_reserved->keyboard).eject.delayMS != DELAY) {
+            IOLOG_INFO("Set eject.delayMS\n");
+            (service->_reserved->keyboard).eject.delayMS = DELAY;
+          }
 #else
-          service->_reserved->ejectDelayMS = DELAY;
+          if (service->_reserved->ejectDelayMS != DELAY) {
+            IOLOG_INFO("Set ejectDelayMS\n");
+            service->_reserved->ejectDelayMS = DELAY;
+          }
 #endif
         }
       }
@@ -233,8 +243,11 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
     {
       IOHIKeyboard* keyboard = OSDynamicCast(IOHIKeyboard, self->devices_[i]);
       if (keyboard) {
-        IOHIKeyboardMapper* mapper = keyboard->_keyMap;
-        if (mapper && mapper->_reserved) {
+        IOHIKeyboardMapper* mapper = OSDynamicCast(IOHIKeyboardMapper, keyboard->_keyMap);
+        if (mapper &&
+            mapper->_reserved &&
+            mapper->_reserved->supportsF12Eject != 0) {
+          IOLOG_INFO("Unset supportsF12Eject\n");
           mapper->_reserved->supportsF12Eject = 0;
         }
       }
