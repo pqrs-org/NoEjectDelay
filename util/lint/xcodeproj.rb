@@ -1,53 +1,45 @@
 #!/usr/bin/ruby
 
-$lines = []
-while l = $stdin.gets
-  $lines << l.strip
-end
+require 'json'
 
-def parseline(line)
-  if /(.+?)=(.+)/ =~ line then
-    name = $1
-    value = $2
-    return [name.strip, value.strip.gsub(/;$/, '')]
-  end
-  return [nil, nil]
-end
+$configuration = JSON.parse($stdin.read)
 
-def check_value(name, value)
+def check_value(name, value, configuration = nil)
   return if ARGV.include?(name)
-  print "  check #{name}\n"
+  if configuration.nil? then
+    print "  check #{name}\n"
+    configuration = $configuration
+  end
 
   isexist = false
-  $lines.each do |l|
-    (linename, linevalue) = parseline(l)
-    if name == linename then
-      isexist = true
-      if value != linevalue then
-        print "[ERROR] Invalid value: #{name} (#{linevalue} != #{value})\n"
-        exit 1
+  configuration.each do |k,v|
+    if v.kind_of?(Enumerable) then
+      if check_value(name, value, v) then
+        isexist = true
+      end
+    else
+      if name == k then
+        isexist = true
+        if value.nil? then
+          print "[ERROR] Appear name: #{name}\n"
+          exit 1
+        elsif value != v then
+          print "[ERROR] Invalid value: #{name} (#{v} != #{value})\n"
+          exit 1
+        end
       end
     end
   end
-  unless isexist then
+
+  if configuration.nil? and (not isexist) then
     print "[ERROR] No setting: #{name}\n"
     exit 1
   end
+
+  isexist
 end
 
-def check_noexist(name)
-  $lines.each do |l|
-    (linename, linevalue) = parseline(l)
-    if name == linename then
-      print "[ERROR] Appear name: #{name}\n"
-      exit 1
-    end
-  end
-end
-
-# check_value('ARCHS', '"$(ARCHS_STANDARD_32_64_BIT)"');
 check_value('objectVersion', '46')
-# check_value('GCC_ENABLE_OBJC_GC', 'unsupported')
 check_value('GCC_TREAT_WARNINGS_AS_ERRORS', 'YES')
 check_value('GCC_WARN_64_TO_32_BIT_CONVERSION', 'YES')
 check_value('GCC_WARN_ABOUT_MISSING_NEWLINE', 'YES')
@@ -65,6 +57,5 @@ check_value('GCC_WARN_UNUSED_VALUE', 'YES')
 check_value('GCC_WARN_UNUSED_VARIABLE', 'YES')
 check_value('CLANG_ENABLE_OBJC_ARC', 'YES')
 check_value('RUN_CLANG_STATIC_ANALYZER', 'YES')
-# check_value('SDKROOT', 'macosx')
 
-check_noexist('GCC_WARN_PROTOTYPE_CONVERSION')
+check_value('GCC_WARN_PROTOTYPE_CONVERSION', nil)
