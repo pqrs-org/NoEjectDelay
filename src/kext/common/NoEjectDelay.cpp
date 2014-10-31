@@ -17,15 +17,13 @@
 // http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/CPluPlusRuntime/chapter_2_section_3.html
 
 // This convention makes it easy to invoke base class member functions.
-#define super    IOService
+#define super IOService
 // You cannot use the "super" macro here, however, with the
 //  OSDefineMetaClassAndStructors macro.
-OSDefineMetaClassAndStructors(org_pqrs_driver_NoEjectDelay, IOService)
+OSDefineMetaClassAndStructors(org_pqrs_driver_NoEjectDelay, IOService);
 
 // ----------------------------------------------------------------------
-bool
-org_pqrs_driver_NoEjectDelay::init(OSDictionary* dict)
-{
+bool org_pqrs_driver_NoEjectDelay::init(OSDictionary* dict) {
   IOLOG_INFO("init %s\n", NoEjectDelay_version);
 
   notifier_hookKeyboard_ = NULL;
@@ -40,26 +38,23 @@ org_pqrs_driver_NoEjectDelay::init(OSDictionary* dict)
 }
 
 void
-org_pqrs_driver_NoEjectDelay::free(void)
-{
+org_pqrs_driver_NoEjectDelay::free(void) {
   IOLOG_INFO("free\n");
   super::free();
 }
 
 IOService*
-org_pqrs_driver_NoEjectDelay::probe(IOService* provider, SInt32* score)
-{
+org_pqrs_driver_NoEjectDelay::probe(IOService* provider, SInt32* score) {
   IOService* res = super::probe(provider, score);
   return res;
 }
 
 bool
-org_pqrs_driver_NoEjectDelay::start(IOService* provider)
-{
+org_pqrs_driver_NoEjectDelay::start(IOService* provider) {
   IOLOG_INFO("start\n");
 
   bool res = super::start(provider);
-  if (! res) { return res; }
+  if (!res) { return res; }
 
   // ----------------------------------------
   org_pqrs_NoEjectDelay::GlobalLock::initialize();
@@ -85,10 +80,10 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
 
   // ----------------------------------------
   workLoop_ = IOWorkLoop::workLoop();
-  if (! workLoop_) return false;
+  if (!workLoop_) return false;
 
   timerEventSource_ = IOTimerEventSource::timerEventSource(this, timer_callback);
-  if (! timerEventSource_) return false;
+  if (!timerEventSource_) return false;
 
   if (workLoop_->addEventSource(timerEventSource_) != kIOReturnSuccess) return false;
 
@@ -99,8 +94,7 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider)
 }
 
 void
-org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
-{
+org_pqrs_driver_NoEjectDelay::stop(IOService* provider) {
   IOLOG_INFO("stop\n");
 
   // ----------------------------------------
@@ -122,7 +116,7 @@ org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
   }
 
   // ----------------------------------------
-  if (notifier_hookKeyboard_)   { notifier_hookKeyboard_->remove(); }
+  if (notifier_hookKeyboard_) { notifier_hookKeyboard_->remove(); }
   if (notifier_unhookKeyboard_) { notifier_unhookKeyboard_->remove(); }
 
   super::stop(provider);
@@ -130,31 +124,29 @@ org_pqrs_driver_NoEjectDelay::stop(IOService* provider)
 
 // ----------------------------------------
 namespace {
-  const char*
-  getProductPropertyCStringNoCopy(IOService* service)
-  {
-    const OSString* productname = OSDynamicCast(OSString, service->getProperty(kIOHIDProductKey));
-    if (! productname) return NULL;
+const char*
+getProductPropertyCStringNoCopy(IOService* service) {
+  const OSString* productname = OSDynamicCast(OSString, service->getProperty(kIOHIDProductKey));
+  if (!productname) return NULL;
 
-    const char* pname = productname->getCStringNoCopy();
-    if (! pname) return NULL;
+  const char* pname = productname->getCStringNoCopy();
+  if (!pname) return NULL;
 
-    return pname;
-  }
+  return pname;
+}
 }
 
 // ----------------------------------------
 bool
-org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier)
-{
+org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
   org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
-  if (! lk) return false;
+  if (!lk) return false;
 
   // ----------------------------------------
   org_pqrs_driver_NoEjectDelay* self = reinterpret_cast<org_pqrs_driver_NoEjectDelay*>(target);
-  if (! self) return false;
+  if (!self) return false;
 
-  if (! newService) return false;
+  if (!newService) return false;
 
   // ----------------------------------------
   const char* name = newService->getName();
@@ -165,7 +157,7 @@ org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback(void*
 
   // ----------------------------------------
   for (int i = 0; i < MAXNUM_DEVICES; ++i) {
-    if (! self->devices_[i]) {
+    if (!self->devices_[i]) {
       self->devices_[i] = newService;
       return true;
     }
@@ -179,14 +171,13 @@ bool
 org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOTerminatedNotification_callback(void* target,
                                                                               void* refCon,
                                                                               IOService* newService,
-                                                                              IONotifier* notifier)
-{
+                                                                              IONotifier* notifier) {
   org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
-  if (! lk) return false;
+  if (!lk) return false;
 
   // ----------------------------------------
   org_pqrs_driver_NoEjectDelay* self = reinterpret_cast<org_pqrs_driver_NoEjectDelay*>(target);
-  if (! self) return false;
+  if (!self) return false;
 
   // ----------------------------------------
   for (int i = 0; i < MAXNUM_DEVICES; ++i) {
@@ -197,23 +188,21 @@ org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOTerminatedNotification_callback(vo
   return true;
 }
 
-
 void
-org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSource* sender)
-{
+org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSource* sender) {
   org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
-  if (! lk) return;
+  if (!lk) return;
 
   // ----------------------------------------
   org_pqrs_driver_NoEjectDelay* self = OSDynamicCast(org_pqrs_driver_NoEjectDelay, target);
-  if (! self) return;
+  if (!self) return;
 
   // ----------------------------------------
   // supportsF12Eject becomes true when user logged in even if supportsF12Eject is false.
   // Therefore, we need to overwrite this value from timer.
 
   for (int i = 0; i < MAXNUM_DEVICES; ++i) {
-    if (! self->devices_[i]) continue;
+    if (!self->devices_[i]) continue;
 
     // set Eject delay.
     {
@@ -257,10 +246,9 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
 }
 
 void
-org_pqrs_driver_NoEjectDelay::setEjectDelayMS(IOHIDEventService* service)
-{
-  if (! service) return;
-  if (! service->_reserved) return;
+org_pqrs_driver_NoEjectDelay::setEjectDelayMS(IOHIDEventService* service) {
+  if (!service) return;
+  if (!service->_reserved) return;
 
   const int DELAY = 5;
 #ifdef __MAC_10_9
