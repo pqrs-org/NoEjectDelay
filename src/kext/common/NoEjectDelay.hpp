@@ -22,6 +22,8 @@ private:
   static void timer_callback(OSObject* target, IOTimerEventSource* sender);
   static void setEjectDelayMS(IOHIDEventService* service);
 
+  IONotifier* notifier_hookEventService_;
+  IONotifier* notifier_unhookEventService_;
   IONotifier* notifier_hookKeyboard_;
   IONotifier* notifier_unhookKeyboard_;
 
@@ -29,7 +31,7 @@ private:
   IOTimerEventSource* timerEventSource_;
 
   enum {
-    MAXNUM_DEVICES = 16,
+    MAXNUM_DEVICES = 32,
     TIMER_INTERVAL_MS = 3000,
   };
   IOService* devices_[MAXNUM_DEVICES];

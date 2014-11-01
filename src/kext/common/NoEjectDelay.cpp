@@ -3,7 +3,7 @@
 #define protected public // A hack for access private member of IOHIKeyboard
 #define private public
 #include <IOKit/hidsystem/IOHIKeyboard.h>
-#include "IOHIDConsumer.h"
+#include <IOKit/hidevent/IOHIDEventService.h>
 #undef protected
 #undef private
 #include <IOKit/IOLib.h>
@@ -78,6 +78,24 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider) {
     return false;
   }
 
+  notifier_hookEventService_ = addMatchingNotification(gIOMatchedNotification,
+                                                       serviceMatching("IOHIDEventService"),
+                                                       org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback,
+                                                       this, NULL, 0);
+  if (notifier_hookEventService_ == NULL) {
+    IOLOG_ERROR("initialize_notification notifier_hookEventService_ == NULL\n");
+    return false;
+  }
+
+  notifier_unhookEventService_ = addMatchingNotification(gIOTerminatedNotification,
+                                                         serviceMatching("IOHIDEventService"),
+                                                         org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOTerminatedNotification_callback,
+                                                         this, NULL, 0);
+  if (notifier_unhookEventService_ == NULL) {
+    IOLOG_ERROR("initialize_notification notifier_unhookEventService_ == NULL\n");
+    return false;
+  }
+
   // ----------------------------------------
   workLoop_ = IOWorkLoop::workLoop();
   if (!workLoop_) return false;
@@ -118,6 +136,8 @@ org_pqrs_driver_NoEjectDelay::stop(IOService* provider) {
   // ----------------------------------------
   if (notifier_hookKeyboard_) { notifier_hookKeyboard_->remove(); }
   if (notifier_unhookKeyboard_) { notifier_unhookKeyboard_->remove(); }
+  if (notifier_hookEventService_) { notifier_hookEventService_->remove(); }
+  if (notifier_unhookEventService_) { notifier_unhookEventService_->remove(); }
 
   super::stop(provider);
 }
@@ -207,19 +227,8 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
     // set Eject delay.
     {
       {
-        IOHIDConsumer* consumer = OSDynamicCast(IOHIDConsumer, self->devices_[i]);
-        if (consumer) {
-          // We are using private header of IOHIDConsumer.
-          // So, we need to check "consumer->_provider is IOHIDEventService" by OSDynamicCast.
-          IOHIDEventService* service = OSDynamicCast(IOHIDEventService, consumer->_provider);
-          setEjectDelayMS(service);
-        }
-      }
-      {
-        IOHIDKeyboard* keyboard = OSDynamicCast(IOHIDKeyboard, self->devices_[i]);
-        if (keyboard) {
-          // Like above, we need to check _provider.
-          IOHIDEventService* service = OSDynamicCast(IOHIDEventService, keyboard->_provider);
+        IOHIDEventService* service = OSDynamicCast(IOHIDEventService, self->devices_[i]);
+        if (service) {
           setEjectDelayMS(service);
         }
       }
@@ -251,15 +260,8 @@ org_pqrs_driver_NoEjectDelay::setEjectDelayMS(IOHIDEventService* service) {
   if (!service->_reserved) return;
 
   const int DELAY = 5;
-#ifdef __MAC_10_9
   if ((service->_reserved->keyboard).eject.delayMS != DELAY) {
     IOLOG_INFO("Set eject.delayMS\n");
     (service->_reserved->keyboard).eject.delayMS = DELAY;
   }
-#else
-  if (service->_reserved->ejectDelayMS != DELAY) {
-    IOLOG_INFO("Set ejectDelayMS\n");
-    service->_reserved->ejectDelayMS = DELAY;
-  }
-#endif
 }
