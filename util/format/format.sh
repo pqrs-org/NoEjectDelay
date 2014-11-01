@@ -7,7 +7,5 @@ find ../../* \
     -type f \
     ! -ipath '*/Pods/*' \
     ! -ipath '*/build/*' \
-    ! -ipath '*/kext/*/*include/*' \
-    ! -ipath '*/src/bridge/output/*' \
     \
     | xargs "$clang_format" -i
