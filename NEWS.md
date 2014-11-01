@@ -1,5 +1,5 @@
-Since 5.4.0
------------
+Version 6.0.0
+-------------
 
 * OS X 10.10 has been supported.
 * OS X 10.8 support has been dropped.
