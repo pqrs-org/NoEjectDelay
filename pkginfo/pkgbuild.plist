@@ -3,14 +3,14 @@
 <plist version="1.0">
   <array>
     <dict>
-      <key>RootRelativeBundlePath</key>      <string>Library/org.pqrs/NoEjectDelay/NoEjectDelay.10.8.kext</string>
+      <key>RootRelativeBundlePath</key>      <string>Library/org.pqrs/NoEjectDelay/NoEjectDelay.10.9.signed.kext</string>
       <key>BundleHasStrictIdentifier</key>   <false/>
       <key>BundleIsRelocatable</key>         <false/>
       <key>BundleIsVersionChecked</key>      <false/>
       <key>BundleOverwriteAction</key>       <string>upgrade</string>
     </dict>
     <dict>
-      <key>RootRelativeBundlePath</key>      <string>Library/org.pqrs/NoEjectDelay/NoEjectDelay.10.9.signed.kext</string>
+      <key>RootRelativeBundlePath</key>      <string>Library/org.pqrs/NoEjectDelay/NoEjectDelay.10.10.signed.kext</string>
       <key>BundleHasStrictIdentifier</key>   <false/>
       <key>BundleIsRelocatable</key>         <false/>
       <key>BundleIsVersionChecked</key>      <false/>
