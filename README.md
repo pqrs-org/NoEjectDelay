@@ -15,43 +15,40 @@ Web pages
 System requirements
 -------------------
 
-Mac OS X 10.8 or higher.
+Mac OS X 10.9 or higher.
 
-* If you require NoEjectDelay for Mac OS X 10.5, use NoEjectDelay 1.1.0.
-* If you require NoEjectDelay for Mac OS X 10.6, use NoEjectDelay 3.6.0.
+* If you require NoEjectDelay for Mac OS X 10.8, use NoEjectDelay 5.4.0.
 * If you require NoEjectDelay for Mac OS X 10.7, use NoEjectDelay 4.1.0.
+* If you require NoEjectDelay for Mac OS X 10.6, use NoEjectDelay 3.6.0.
+* If you require NoEjectDelay for Mac OS X 10.5, use NoEjectDelay 1.1.0.
 
 
 How to build
 ------------
 
-Requirements:
+System requirements:
 
-* OS X 10.9+
-* Xcode 5.0.1+
+* OS X 10.10+
+* Xcode 6.0.1+
 * Command Line Tools for Xcode
 
-### Step1: Getting source code
+### Step 1: Getting source code
 
-Execute a following command in Terminal.app.
+Download the source to master.tar.gz in the current directory, this can be re-executed to restart a cancelled download.
 
-<pre>
-git clone --depth 10 https://github.com/tekezo/NoEjectDelay.git
-</pre>
+    curl -OLC - https://github.com/tekezo/NoEjectDelay/archive/master.tar.gz
+
+Extract the master.tar.gz file to "NoEjectDelay-master" and delete the tar.gz file
+
+    tar -xvzf master.tar.gz && rm master.tar.gz
 
 ### Step2: Building a package
 
-Execute a following command in Terminal.app.
+    cd NoEjectDelay-master
+    make
 
-<pre>
-cd NoEjectDelay
-make
-</pre>
-
-Then, NoEjectDelay-VERSION.dmg has been created in the current directory.
-It's a distributable package.
+The `make` script will create a redistributable **NoEjectDelay-VERSION.dmg** in the current directory.
 
 
-**Note:**<br />
-Build may be failed if you changed environment values or changed /usr/bin files.<br />
-Use clean environment (new account) if build was failed.
+**Note:**
+The build may fail if you have changed any environment variables or if you have modified scripts in the `/usr/bin` locations. Use a clean environment (new account) if this is the case.
