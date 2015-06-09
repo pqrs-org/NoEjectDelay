@@ -1,3 +1,8 @@
+Version 6.1.0
+-------------
+
+* OS X 10.11 has been supported.
+
 Version 6.0.0
 -------------
 
