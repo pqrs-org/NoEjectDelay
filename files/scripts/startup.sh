@@ -12,6 +12,9 @@ case "${uname%%.*}" in
     14)
         kextfile="$basedir/NoEjectDelay.10.10.signed.kext"
         ;;
+    15)
+        kextfile="$basedir/NoEjectDelay.10.11.signed.kext"
+        ;;
 esac
 
 if [ "x$kextfile" == 'x' ]; then

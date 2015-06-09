@@ -15,7 +15,7 @@ mkdir -p pkgroot
 
 basedir="/Library/org.pqrs/NoEjectDelay"
 mkdir -p "pkgroot/$basedir"
-for ostype in 10.9 10.10; do
+for ostype in 10.9 10.10 10.11; do
     # We should sign kext after OS X 10.9.
     cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.signed.kext"
 done
