@@ -6,16 +6,14 @@
 namespace org_pqrs_NoEjectDelay {
 IOLock* GlobalLock::lock_ = NULL;
 
-void
-GlobalLock::initialize(void) {
+void GlobalLock::initialize(void) {
   lock_ = IOLockAlloc();
   if (!lock_) {
     IOLOG_ERROR("IOLockAlloc failed.\n");
   }
 }
 
-void
-GlobalLock::terminate(void) {
+void GlobalLock::terminate(void) {
   if (!lock_) return;
 
   IOLockLock(lock_);
@@ -43,8 +41,7 @@ GlobalLock::ScopedLock::~ScopedLock(void) {
   IOLockUnlock(lock_);
 }
 
-bool
-GlobalLock::ScopedLock::operator!(void)const {
+bool GlobalLock::ScopedLock::operator!(void)const {
   return lock_ == NULL;
 }
 
@@ -62,8 +59,7 @@ GlobalLock::ScopedUnlock::~ScopedUnlock(void) {
   IOLockLock(lock_);
 }
 
-bool
-GlobalLock::ScopedUnlock::operator!(void)const {
+bool GlobalLock::ScopedUnlock::operator!(void)const {
   return lock_ == NULL;
 }
 }

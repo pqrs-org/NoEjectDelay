@@ -37,8 +37,7 @@ bool org_pqrs_driver_NoEjectDelay::init(OSDictionary* dict) {
   return super::init(dict);
 }
 
-void
-org_pqrs_driver_NoEjectDelay::free(void) {
+void org_pqrs_driver_NoEjectDelay::free(void) {
   IOLOG_INFO("free\n");
   super::free();
 }
@@ -49,8 +48,7 @@ org_pqrs_driver_NoEjectDelay::probe(IOService* provider, SInt32* score) {
   return res;
 }
 
-bool
-org_pqrs_driver_NoEjectDelay::start(IOService* provider) {
+bool org_pqrs_driver_NoEjectDelay::start(IOService* provider) {
   IOLOG_INFO("start\n");
 
   bool res = super::start(provider);
@@ -111,8 +109,7 @@ org_pqrs_driver_NoEjectDelay::start(IOService* provider) {
   return res;
 }
 
-void
-org_pqrs_driver_NoEjectDelay::stop(IOService* provider) {
+void org_pqrs_driver_NoEjectDelay::stop(IOService* provider) {
   IOLOG_INFO("stop\n");
 
   // ----------------------------------------
@@ -157,8 +154,7 @@ getProductPropertyCStringNoCopy(IOService* service) {
 }
 
 // ----------------------------------------
-bool
-org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
+bool org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
   org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
   if (!lk) return false;
 
@@ -187,11 +183,10 @@ org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOMatchedNotification_callback(void*
   return true;
 }
 
-bool
-org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOTerminatedNotification_callback(void* target,
-                                                                              void* refCon,
-                                                                              IOService* newService,
-                                                                              IONotifier* notifier) {
+bool org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOTerminatedNotification_callback(void* target,
+                                                                                   void* refCon,
+                                                                                   IOService* newService,
+                                                                                   IONotifier* notifier) {
   org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
   if (!lk) return false;
 
@@ -208,8 +203,7 @@ org_pqrs_driver_NoEjectDelay::IOHIKeyboard_gIOTerminatedNotification_callback(vo
   return true;
 }
 
-void
-org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSource* sender) {
+void org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSource* sender) {
   org_pqrs_NoEjectDelay::GlobalLock::ScopedLock lk;
   if (!lk) return;
 
@@ -254,8 +248,7 @@ org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEventSourc
   }
 }
 
-void
-org_pqrs_driver_NoEjectDelay::setEjectDelayMS(IOHIDEventService* service) {
+void org_pqrs_driver_NoEjectDelay::setEjectDelayMS(IOHIDEventService* service) {
   if (!service) return;
   if (!service->_reserved) return;
 
