@@ -3,7 +3,7 @@
 <plist version="1.0">
   <array>
     <dict>
-      <key>RootRelativeBundlePath</key>      <string>Library/org.pqrs/NoEjectDelay/NoEjectDelay.10.11.signed.kext</string>
+      <key>RootRelativeBundlePath</key>      <string>Library/Application Support/org.pqrs/NoEjectDelay/NoEjectDelay.10.11.signed.kext</string>
       <key>BundleHasStrictIdentifier</key>   <false/>
       <key>BundleIsRelocatable</key>         <false/>
       <key>BundleIsVersionChecked</key>      <false/>

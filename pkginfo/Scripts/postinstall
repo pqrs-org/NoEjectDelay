@@ -4,18 +4,17 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 # ------------------------------------------------------------
 # set file permissions
 for f in \
-    /Library/LaunchDaemons/org.pqrs.NoEjectDelay.load.plist \
-    /Library/org.pqrs \
+    '/Library/Application Support/org.pqrs/NoEjectDelay' \
+    '/Library/LaunchDaemons/org.pqrs.NoEjectDelay.load.plist' \
     ; do
     echo "set file permissions: $f"
-    sh /Library/org.pqrs/NoEjectDelay/extra/setpermissions.sh "$f"
+    sh '/Library/Application Support/org.pqrs/NoEjectDelay/setpermissions.sh' "$f"
     chown -Rh root:wheel "$f"
 done
 
 # ------------------------------------------------------------
 # load kext
+sh "/Library/Application Support/org.pqrs/NoEjectDelay/startup.sh" start
 
-startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
-[ -f "$startup" ] && "$startup" start
-
+# ------------------------------------------------------------
 exit 0

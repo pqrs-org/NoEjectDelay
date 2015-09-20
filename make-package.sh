@@ -7,29 +7,28 @@ version=$(cat version)
 make clean build || exit $?
 
 # --------------------------------------------------
-# http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptPackaging/packaging_kext.html
+# https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptPackaging/packaging_tutorial.html
 echo "Copy Files"
 
 rm -rf pkgroot
 mkdir -p pkgroot
 
-basedir="/Library/org.pqrs/NoEjectDelay"
-mkdir -p "pkgroot/$basedir"
+basedir="pkgroot/Library/Application Support/org.pqrs/NoEjectDelay"
+mkdir -p "$basedir"
 for ostype in 10.11; do
     # We should sign kext after OS X 10.11.
-    cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "pkgroot/$basedir/NoEjectDelay.${ostype}.signed.kext"
+    cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "$basedir/NoEjectDelay.${ostype}.signed.kext"
 done
-cp -R files/scripts "pkgroot/$basedir"
 
-mkdir -p                            "pkgroot/$basedir/extra"
-cp -R pkginfo/Scripts/preinstall    "pkgroot/$basedir/extra/uninstall.sh"
-cp -R files/extra/setpermissions.sh "pkgroot/$basedir/extra/"
+cp -R pkginfo/Scripts/preinstall    "$basedir/uninstall.sh"
+cp -R files/extra/setpermissions.sh "$basedir"
+cp -R files/extra/startup.sh        "$basedir"
 
 mkdir -p                  "pkgroot/Library"
 cp -R files/LaunchDaemons "pkgroot/Library"
 
 # Sign with Developer ID
-bash files/extra/codesign.sh pkgroot
+bash files/extra/codesign.sh "pkgroot/Library/Application Support"
 
 # Setting file permissions.
 #
@@ -38,7 +37,7 @@ bash files/extra/codesign.sh pkgroot
 #   PackageMaker uses their permissions.
 #
 #   For example:
-#     If /Library/org.pqrs permission is 0777 by accidental reasons,
+#     If /Library/Application Support/org.pqrs permission is 0777 by accidental reasons,
 #     the directory permission will be 0777 in Archive.bom
 #     even if we set this directory permission to 0755 by setpermissions.sh.
 #

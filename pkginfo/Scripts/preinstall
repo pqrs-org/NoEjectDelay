@@ -3,14 +3,19 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 # ----------------------------------------
 # unload
-#
+startup='/Library/Application Support/org.pqrs/NoEjectDelay/startup.sh'
+[ -f "$startup" ] && "$startup" stop
+
+# old scripts
 startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" stop
 
 # ----------------------------------------
 # uninstall files
-rm -rf /Library/org.pqrs/NoEjectDelay
-
+rm -rf '/Library/Application Support/org.pqrs/NoEjectDelay'
 rm -f /Library/LaunchDaemons/org.pqrs.NoEjectDelay.*
+
+# remove old files
+rm -rf /Library/org.pqrs/NoEjectDelay
 
 exit 0

@@ -1,17 +1,11 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
-basedir="/Library/org.pqrs/NoEjectDelay"
+basedir='/Library/Application Support/org.pqrs/NoEjectDelay'
 
 # --------------------
 uname=`uname -r`
 case "${uname%%.*}" in
-    13)
-        kextfile="$basedir/NoEjectDelay.10.9.signed.kext"
-        ;;
-    14)
-        kextfile="$basedir/NoEjectDelay.10.10.signed.kext"
-        ;;
     15)
         kextfile="$basedir/NoEjectDelay.10.11.signed.kext"
         ;;
