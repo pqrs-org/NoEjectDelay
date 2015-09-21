@@ -57,13 +57,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box fixedFrame="YES" title="Version" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ayE-nP-yu0">
-                        <rect key="frame" x="17" y="266" width="446" height="74"/>
+                        <rect key="frame" x="17" y="263" width="446" height="77"/>
                         <view key="contentView" id="rwf-FT-7hi">
-                            <rect key="frame" x="1" y="1" width="444" height="58"/>
+                            <rect key="frame" x="1" y="1" width="444" height="61"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaU-7V-GBG">
+                                    <rect key="frame" x="20" y="8" width="48" height="48"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="1024" id="42w-wQ-1QW"/>
+                                </imageView>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Smp-jq-niE">
-                                    <rect key="frame" x="18" y="21" width="143" height="17"/>
+                                    <rect key="frame" x="74" y="24" width="143" height="17"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NoEjectDelay version: " id="fVQ-B5-MQn">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -71,7 +75,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehD-gg-QpT">
-                                    <rect key="frame" x="165" y="21" width="58" height="17"/>
+                                    <rect key="frame" x="221" y="24" width="58" height="17"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="12.34.56" id="DEz-eX-RDQ">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -87,4 +91,7 @@
             </view>
         </window>
     </objects>
+    <resources>
+        <image name="1024" width="1024" height="1024"/>
+    </resources>
 </document>
