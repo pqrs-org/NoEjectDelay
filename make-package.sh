@@ -13,6 +13,21 @@ echo "Copy Files"
 rm -rf pkgroot
 mkdir -p pkgroot
 
+mkdir -p "pkgroot/Applications"
+cp -R "src/util/app/build/Release/NoEjectDelay.app" "pkgroot/Applications"
+
+basedir="pkgroot/Applications/NoEjectDelay.app/Contents/Applications"
+mkdir -p "$basedir"
+for d in \
+    src/util/uninstaller/automator/NoEjectDelayUninstaller.app \
+    ;
+do
+    cp -R "$d" "$basedir"
+done
+
+mkdir -p                  "pkgroot/Library"
+cp -R files/LaunchDaemons "pkgroot/Library"
+
 basedir="pkgroot/Library/Application Support/org.pqrs/NoEjectDelay"
 mkdir -p "$basedir"
 for ostype in 10.11; do
@@ -20,14 +35,19 @@ for ostype in 10.11; do
     cp -R src/kext/${ostype}/build/Release/NoEjectDelay.kext "$basedir/NoEjectDelay.${ostype}.signed.kext"
 done
 
-cp -R pkginfo/Scripts/preinstall    "$basedir/uninstall.sh"
-cp -R files/extra/setpermissions.sh "$basedir"
-cp -R files/extra/startup.sh        "$basedir"
-
-mkdir -p                  "pkgroot/Library"
-cp -R files/LaunchDaemons "pkgroot/Library"
+cp -R pkginfo/Scripts/preinstall "$basedir/uninstall_core.sh"
+for f in \
+    files/extra/launchUninstaller.sh \
+    files/extra/setpermissions.sh \
+    files/extra/startup.sh \
+    files/extra/uninstall.sh \
+    ;
+do
+    cp -R "$f" "$basedir"
+done
 
 # Sign with Developer ID
+bash files/extra/codesign.sh "pkgroot/Applications"
 bash files/extra/codesign.sh "pkgroot/Library/Application Support"
 
 # Setting file permissions.
@@ -37,7 +57,7 @@ bash files/extra/codesign.sh "pkgroot/Library/Application Support"
 #   PackageMaker uses their permissions.
 #
 #   For example:
-#     If /Library/Application Support/org.pqrs permission is 0777 by accidental reasons,
+#     If /Applications/NoEjectDelay.app permission is 0777 by accidental reasons,
 #     the directory permission will be 0777 in Archive.bom
 #     even if we set this directory permission to 0755 by setpermissions.sh.
 #
