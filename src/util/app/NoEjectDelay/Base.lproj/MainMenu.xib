@@ -75,13 +75,43 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehD-gg-QpT">
-                                    <rect key="frame" x="221" y="24" width="58" height="17"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="12.34.56" id="DEz-eX-RDQ">
+                                    <rect key="frame" x="221" y="24" width="45" height="17"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="--.--.--" id="DEz-eX-RDQ">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
+                    <box fixedFrame="YES" title="Update" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="jEK-tE-ayo">
+                        <rect key="frame" x="17" y="158" width="446" height="87"/>
+                        <view key="contentView" id="zrq-Fy-qXa">
+                            <rect key="frame" x="1" y="1" width="444" height="71"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
+                    <box fixedFrame="YES" title="Uninstall" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="uaY-rX-3ze">
+                        <rect key="frame" x="17" y="79" width="446" height="59"/>
+                        <view key="contentView" id="L4n-J5-uzI">
+                            <rect key="frame" x="1" y="1" width="444" height="43"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A6y-VK-jwi">
+                                    <rect key="frame" x="14" y="4" width="153" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Launch uninstaller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JGs-fn-kmz">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="launchUninstaller:" target="Voe-Tx-rLC" id="cgD-Fb-ji4"/>
+                                    </connections>
+                                </button>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

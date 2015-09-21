@@ -12,8 +12,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(aNotification: NSNotification) {
     }
-    
+
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
         return true;
+    }
+
+    @IBAction func launchUninstaller(sender: NSButton) {
+        system("sh '/Library/Application Support/org.pqrs/NoEjectDelay/launchUninstaller.sh'");
     }
 }
