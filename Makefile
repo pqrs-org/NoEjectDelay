@@ -3,11 +3,11 @@ all:
 
 build:
 	$(MAKE) -C pkginfo
-	$(MAKE) -C src/kext
+	$(MAKE) -C src
 
 clean:
 	$(MAKE) -C pkginfo clean
-	$(MAKE) -C src/kext clean
+	$(MAKE) -C src clean
 
 gitclean:
 	git clean -f -x -d
