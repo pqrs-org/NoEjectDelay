@@ -2,7 +2,14 @@
 CONFIGURATION = Release
 
 all:
+	pod install --no-repo-update
 	$(MAKE) -C ../../../pkginfo
+	xcodebuild \
+		-workspace *.xcworkspace \
+		-scheme Pods \
+		-configuration $(CONFIGURATION) \
+		build \
+		SYMROOT=`pwd`/build
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
@@ -15,7 +22,10 @@ clean:
 	rm -rf *.xcodeproj/project.xcworkspace/xcuserdata
 
 xcode:
-	open *.xcodeproj
+	open *.xcworkspace
 
 run: all
 	open build/Release/NoEjectDelay.app
+
+podupdate:
+	pod update
