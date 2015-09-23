@@ -75,7 +75,7 @@ chmod 755 \
 # --------------------------------------------------
 echo "Create pkg"
 
-pkgName="NoEjectDelay.pkg"
+pkgName="NoEjectDelay.sparkle_guided.pkg"
 pkgIdentifier="org.pqrs.driver.NoEjectDelay"
 archiveName="NoEjectDelay-${version}"
 
