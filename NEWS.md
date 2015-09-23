@@ -1,5 +1,7 @@
 # Since 6.1.0
 
+* An utility application "NoEjectDelay.app" has been added.
+* Uninstaller has been bundled.
 * The file location has been moved to "/Library/Application Support/org.pqrs/NoEjectDelay" from "/Library/org.pqrs/NoEjectDelay".
 * OS X 10.10 support has been dropped.
 * OS X 10.9 support has been dropped.
