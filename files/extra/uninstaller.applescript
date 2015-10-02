@@ -6,7 +6,7 @@ try
             try
                 do shell script "sh '/Library/Application Support/org.pqrs/NoEjectDelay/uninstall.sh'" with administrator privileges
                 display alert "NoEjectDelay has been uninstalled. Please restart OS X."
-                do shell script "killall 'NoEjectDelay Utility'"
+                do shell script "/usr/bin/killall 'NoEjectDelay Utility'"
             on error
                 display alert "Failed to uninstall NoEjectDelay."
             end try
