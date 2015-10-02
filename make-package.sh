@@ -17,15 +17,6 @@ mkdir -p pkgroot
 mkdir -p "pkgroot/Applications"
 cp -R "src/util/app/build/Release/NoEjectDelay.app" "pkgroot/Applications"
 
-basedir="pkgroot/Applications/NoEjectDelay.app/Contents/Applications"
-mkdir -p "$basedir"
-for d in \
-    src/util/uninstaller/automator/NoEjectDelayUninstaller.app \
-    ;
-do
-    cp -R "$d" "$basedir"
-done
-
 mkdir -p                  "pkgroot/Library"
 cp -R files/LaunchDaemons "pkgroot/Library"
 
@@ -38,10 +29,10 @@ done
 
 cp -R pkginfo/Scripts/preinstall "$basedir/uninstall_core.sh"
 for f in \
-    files/extra/launchUninstaller.sh \
     files/extra/setpermissions.sh \
     files/extra/startup.sh \
     files/extra/uninstall.sh \
+    files/extra/uninstaller.applescript \
     ;
 do
     cp -R "$f" "$basedir"

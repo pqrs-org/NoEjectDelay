@@ -26,7 +26,8 @@
 }
 
 - (IBAction)launchUninstaller:(id)sender {
-  system("sh '/Library/Application Support/org.pqrs/NoEjectDelay/launchUninstaller.sh'");
+  NSString* path = @"/Library/Application Support/org.pqrs/NoEjectDelay/uninstaller.applescript";
+  [[[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:nil] executeAndReturnError:nil];
 }
 
 @end
