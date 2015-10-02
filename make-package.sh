@@ -15,7 +15,7 @@ rm -rf pkgroot
 mkdir -p pkgroot
 
 mkdir -p "pkgroot/Applications"
-cp -R "src/util/app/build/Release/NoEjectDelay.app" "pkgroot/Applications"
+cp -R "src/util/app/build/Release/NoEjectDelay Utility.app" "pkgroot/Applications"
 
 mkdir -p                  "pkgroot/Library"
 cp -R files/LaunchDaemons "pkgroot/Library"
@@ -39,8 +39,7 @@ do
 done
 
 # Sign with Developer ID
-bash files/extra/codesign.sh "pkgroot/Applications"
-bash files/extra/codesign.sh "pkgroot/Library/Application Support"
+bash files/extra/codesign.sh "pkgroot"
 
 # Setting file permissions.
 #
@@ -49,7 +48,7 @@ bash files/extra/codesign.sh "pkgroot/Library/Application Support"
 #   PackageMaker uses their permissions.
 #
 #   For example:
-#     If /Applications/NoEjectDelay.app permission is 0777 by accidental reasons,
+#     If /Applications/NoEjectDelay Utility.app permission is 0777 by accidental reasons,
 #     the directory permission will be 0777 in Archive.bom
 #     even if we set this directory permission to 0755 by setpermissions.sh.
 #

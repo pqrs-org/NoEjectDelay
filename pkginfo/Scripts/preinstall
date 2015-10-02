@@ -12,10 +12,13 @@ startup="/Library/org.pqrs/NoEjectDelay/scripts/startup.sh"
 
 # ----------------------------------------
 # uninstall files
+rm -rf '/Applications/NoEjectDelay Utility.app'
 rm -rf '/Library/Application Support/org.pqrs/NoEjectDelay'
 rm -f /Library/LaunchDaemons/org.pqrs.NoEjectDelay.*
 
 # remove old files
+rm -rf '/Applications/NoEjectDelay.app'
 rm -rf /Library/org.pqrs/NoEjectDelay
+rmdir /Library/org.pqrs 2>/dev/null
 
 exit 0
