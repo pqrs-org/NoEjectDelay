@@ -71,16 +71,16 @@
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="1024" id="jiw-Yn-Bgl"/>
                                 </imageView>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cng-oS-kx6">
-                                    <rect key="frame" x="92" y="36" width="176" height="17"/>
+                                    <rect key="frame" x="92" y="36" width="137" height="17"/>
                                     <animations/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NoEjectDelay Utility version:" id="Fxe-TL-ECB">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NoEjectDelay version:" id="Fxe-TL-ECB">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vd4-RQ-cb1">
-                                    <rect key="frame" x="272" y="36" width="45" height="17"/>
+                                    <rect key="frame" x="233" y="36" width="45" height="17"/>
                                     <animations/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="--.--.--" id="QDC-oR-Bl0">
                                         <font key="font" metaFont="system"/>
