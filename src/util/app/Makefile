@@ -25,7 +25,7 @@ xcode:
 	open *.xcworkspace
 
 run: all
-	open build/Release/NoEjectDelay.app
+	open 'build/Release/NoEjectDelay Utility.app'
 
 podupdate:
 	pod update

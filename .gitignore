@@ -13,7 +13,7 @@ pkginfo/Info.plist
 pkginfo/Distribution.xml
 src/kext/common/Info.plist
 src/kext/*/version.hpp
-src/util/app/NoEjectDelay/Info.plist
+src/util/app/NoEjectDelay Utility/Info.plist
 
 ### CocoaPods ###
 Pods/

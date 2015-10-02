@@ -8,28 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		113C8BD351F577D21E995765 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19613E723FF06FDBD39A2AC4 /* libPods.a */; };
-		343068E81BB27BF200EA2BD0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 343068E71BB27BF200EA2BD0 /* AppDelegate.m */; };
-		343068EB1BB27BF200EA2BD0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 343068EA1BB27BF200EA2BD0 /* main.m */; };
-		343068ED1BB27BF200EA2BD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343068EC1BB27BF200EA2BD0 /* Assets.xcassets */; };
-		343068F01BB27BF200EA2BD0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 343068EE1BB27BF200EA2BD0 /* MainMenu.xib */; };
-		34378C091BB288F700219EA4 /* 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 34378C081BB288F700219EA4 /* 1024.png */; settings = {ASSET_TAGS = (); }; };
-		34378C0B1BB2890400219EA4 /* NoEjectDelay_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 34378C0A1BB2890400219EA4 /* NoEjectDelay_pub.pem */; settings = {ASSET_TAGS = (); }; };
-		34378C281BB2DC8700219EA4 /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 34378C271BB2DC8700219EA4 /* Updater.m */; settings = {ASSET_TAGS = (); }; };
+		341390221BBEDCA900D904A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 341390201BBEDCA900D904A4 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		341390231BBEDCA900D904A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341390211BBEDCA900D904A4 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
+		341390261BBEDCB700D904A4 /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 341390251BBEDCB700D904A4 /* Updater.m */; settings = {ASSET_TAGS = (); }; };
+		341390281BBEDCCB00D904A4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 341390271BBEDCCB00D904A4 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		3413902A1BBEDCD800D904A4 /* NoEjectDelay_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 341390291BBEDCD800D904A4 /* NoEjectDelay_pub.pem */; settings = {ASSET_TAGS = (); }; };
+		3413902C1BBEDCFD00D904A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413902B1BBEDCFD00D904A4 /* main.m */; settings = {ASSET_TAGS = (); }; };
+		34436D2B1BBEDD6B003226AF /* 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2A1BBEDD6B003226AF /* 1024.png */; settings = {ASSET_TAGS = (); }; };
+		34436D2E1BBEDD88003226AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2C1BBEDD88003226AF /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		19613E723FF06FDBD39A2AC4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		343068E31BB27BF200EA2BD0 /* NoEjectDelay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoEjectDelay.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		343068E61BB27BF200EA2BD0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		343068E71BB27BF200EA2BD0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		343068EA1BB27BF200EA2BD0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		343068EC1BB27BF200EA2BD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		343068EF1BB27BF200EA2BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		343068F11BB27BF200EA2BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34378C081BB288F700219EA4 /* 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1024.png; path = ../../../share/Resources/icons/1024.png; sourceTree = "<group>"; };
-		34378C0A1BB2890400219EA4 /* NoEjectDelay_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NoEjectDelay_pub.pem; path = Resources/NoEjectDelay_pub.pem; sourceTree = "<group>"; };
-		34378C261BB2DC8700219EA4 /* Updater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Updater.h; path = Classes/Updater.h; sourceTree = "<group>"; };
-		34378C271BB2DC8700219EA4 /* Updater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Updater.m; path = Classes/Updater.m; sourceTree = "<group>"; };
+		3413901F1BBEDCA900D904A4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "NoEjectDelay Utility/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		341390201BBEDCA900D904A4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "NoEjectDelay Utility/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		341390211BBEDCA900D904A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "NoEjectDelay Utility/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		341390241BBEDCB700D904A4 /* Updater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Updater.h; path = "NoEjectDelay Utility/Classes/Updater.h"; sourceTree = SOURCE_ROOT; };
+		341390251BBEDCB700D904A4 /* Updater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Updater.m; path = "NoEjectDelay Utility/Classes/Updater.m"; sourceTree = SOURCE_ROOT; };
+		341390271BBEDCCB00D904A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "NoEjectDelay Utility/Info.plist"; sourceTree = SOURCE_ROOT; };
+		341390291BBEDCD800D904A4 /* NoEjectDelay_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NoEjectDelay_pub.pem; path = "NoEjectDelay Utility/Resources/NoEjectDelay_pub.pem"; sourceTree = SOURCE_ROOT; };
+		3413902B1BBEDCFD00D904A4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "NoEjectDelay Utility/main.m"; sourceTree = SOURCE_ROOT; };
+		343068E31BB27BF200EA2BD0 /* NoEjectDelay Utility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NoEjectDelay Utility.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34436D2A1BBEDD6B003226AF /* 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1024.png; path = ../../../share/Resources/icons/1024.png; sourceTree = "<group>"; };
+		34436D2D1BBEDD88003226AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "NoEjectDelay Utility/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 		59BBFF3A208B049105C30843 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5A9627C4F0B281164C491B2C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,7 +50,7 @@
 		343068DA1BB27BF200EA2BD0 = {
 			isa = PBXGroup;
 			children = (
-				343068E51BB27BF200EA2BD0 /* NoEjectDelay */,
+				343068E51BB27BF200EA2BD0 /* NoEjectDelay Utility */,
 				343068E41BB27BF200EA2BD0 /* Products */,
 				DCF4002436C0BFD1BE7972C8 /* Pods */,
 				C5173D2E510B0B49511C3B4F /* Frameworks */,
@@ -59,30 +60,31 @@
 		343068E41BB27BF200EA2BD0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				343068E31BB27BF200EA2BD0 /* NoEjectDelay.app */,
+				343068E31BB27BF200EA2BD0 /* NoEjectDelay Utility.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		343068E51BB27BF200EA2BD0 /* NoEjectDelay */ = {
+		343068E51BB27BF200EA2BD0 /* NoEjectDelay Utility */ = {
 			isa = PBXGroup;
 			children = (
-				343068E61BB27BF200EA2BD0 /* AppDelegate.h */,
-				343068E71BB27BF200EA2BD0 /* AppDelegate.m */,
-				343068EC1BB27BF200EA2BD0 /* Assets.xcassets */,
+				3413901F1BBEDCA900D904A4 /* AppDelegate.h */,
+				341390201BBEDCA900D904A4 /* AppDelegate.m */,
+				341390211BBEDCA900D904A4 /* Assets.xcassets */,
 				34378C251BB2DC7900219EA4 /* Classes */,
-				343068F11BB27BF200EA2BD0 /* Info.plist */,
-				343068EE1BB27BF200EA2BD0 /* MainMenu.xib */,
+				341390271BBEDCCB00D904A4 /* Info.plist */,
+				34436D2C1BBEDD88003226AF /* MainMenu.xib */,
 				34378C071BB288DA00219EA4 /* Resources */,
 				343068E91BB27BF200EA2BD0 /* Supporting Files */,
 			);
+			name = "NoEjectDelay Utility";
 			path = NoEjectDelay;
 			sourceTree = "<group>";
 		};
 		343068E91BB27BF200EA2BD0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				343068EA1BB27BF200EA2BD0 /* main.m */,
+				3413902B1BBEDCFD00D904A4 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -90,8 +92,8 @@
 		34378C071BB288DA00219EA4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				34378C0A1BB2890400219EA4 /* NoEjectDelay_pub.pem */,
-				34378C081BB288F700219EA4 /* 1024.png */,
+				34436D2A1BBEDD6B003226AF /* 1024.png */,
+				341390291BBEDCD800D904A4 /* NoEjectDelay_pub.pem */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -99,8 +101,8 @@
 		34378C251BB2DC7900219EA4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				34378C261BB2DC8700219EA4 /* Updater.h */,
-				34378C271BB2DC8700219EA4 /* Updater.m */,
+				341390241BBEDCB700D904A4 /* Updater.h */,
+				341390251BBEDCB700D904A4 /* Updater.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -125,9 +127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		343068E21BB27BF200EA2BD0 /* NoEjectDelay */ = {
+		343068E21BB27BF200EA2BD0 /* NoEjectDelay Utility */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 343068F41BB27BF200EA2BD0 /* Build configuration list for PBXNativeTarget "NoEjectDelay" */;
+			buildConfigurationList = 343068F41BB27BF200EA2BD0 /* Build configuration list for PBXNativeTarget "NoEjectDelay Utility" */;
 			buildPhases = (
 				4F2AFC8FD474CDE4A421EA3D /* Check Pods Manifest.lock */,
 				343068DF1BB27BF200EA2BD0 /* Sources */,
@@ -139,9 +141,9 @@
 			);
 			dependencies = (
 			);
-			name = NoEjectDelay;
+			name = "NoEjectDelay Utility";
 			productName = NoEjectDelay;
-			productReference = 343068E31BB27BF200EA2BD0 /* NoEjectDelay.app */;
+			productReference = 343068E31BB27BF200EA2BD0 /* NoEjectDelay Utility.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -158,7 +160,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 343068DE1BB27BF200EA2BD0 /* Build configuration list for PBXProject "NoEjectDelay" */;
+			buildConfigurationList = 343068DE1BB27BF200EA2BD0 /* Build configuration list for PBXProject "NoEjectDelay Utility" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -171,7 +173,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				343068E21BB27BF200EA2BD0 /* NoEjectDelay */,
+				343068E21BB27BF200EA2BD0 /* NoEjectDelay Utility */,
 			);
 		};
 /* End PBXProject section */
@@ -181,10 +183,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34378C091BB288F700219EA4 /* 1024.png in Resources */,
-				34378C0B1BB2890400219EA4 /* NoEjectDelay_pub.pem in Resources */,
-				343068ED1BB27BF200EA2BD0 /* Assets.xcassets in Resources */,
-				343068F01BB27BF200EA2BD0 /* MainMenu.xib in Resources */,
+				3413902A1BBEDCD800D904A4 /* NoEjectDelay_pub.pem in Resources */,
+				34436D2E1BBEDD88003226AF /* MainMenu.xib in Resources */,
+				34436D2B1BBEDD6B003226AF /* 1024.png in Resources */,
+				341390281BBEDCCB00D904A4 /* Info.plist in Resources */,
+				341390231BBEDCA900D904A4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,19 +231,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				343068EB1BB27BF200EA2BD0 /* main.m in Sources */,
-				34378C281BB2DC8700219EA4 /* Updater.m in Sources */,
-				343068E81BB27BF200EA2BD0 /* AppDelegate.m in Sources */,
+				341390221BBEDCA900D904A4 /* AppDelegate.m in Sources */,
+				3413902C1BBEDCFD00D904A4 /* main.m in Sources */,
+				341390261BBEDCB700D904A4 /* Updater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		343068EE1BB27BF200EA2BD0 /* MainMenu.xib */ = {
+		34436D2C1BBEDD88003226AF /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				343068EF1BB27BF200EA2BD0 /* Base */,
+				34436D2D1BBEDD88003226AF /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -291,17 +294,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = NoEjectDelay/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NoEjectDelay Utility/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.pqrs.NoEjectDelay;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "NoEjectDelay Utility";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		343068DE1BB27BF200EA2BD0 /* Build configuration list for PBXProject "NoEjectDelay" */ = {
+		343068DE1BB27BF200EA2BD0 /* Build configuration list for PBXProject "NoEjectDelay Utility" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				343068F31BB27BF200EA2BD0 /* Release */,
@@ -309,7 +312,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		343068F41BB27BF200EA2BD0 /* Build configuration list for PBXNativeTarget "NoEjectDelay" */ = {
+		343068F41BB27BF200EA2BD0 /* Build configuration list for PBXNativeTarget "NoEjectDelay Utility" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				343068F61BB27BF200EA2BD0 /* Release */,
