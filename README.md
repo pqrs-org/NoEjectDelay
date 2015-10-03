@@ -25,7 +25,7 @@ Mac OS X 10.11 or higher.
 
 System requirements:
 
-* OS X 10.10+
+* OS X 10.11+
 * Xcode 7.0+
 * Command Line Tools for Xcode
 
