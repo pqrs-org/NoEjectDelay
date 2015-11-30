@@ -1,3 +1,8 @@
+# Since 7.0.0
+
+* Sparkle Framework has been updated.
+
+
 # Version 7.0.0
 
 * An utility application "NoEjectDelay Utility.app" has been added.
