@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/tekezo/NoEjectDelay.svg?branch=master)](https://travis-ci.org/tekezo/NoEjectDelay)
+[![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://github.com/tekezo/NoEjectDelay/blob/master/LICENSE.md)
 
 # NoEjectDelay
 
