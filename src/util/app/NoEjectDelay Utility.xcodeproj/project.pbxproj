@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		113C8BD351F577D21E995765 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19613E723FF06FDBD39A2AC4 /* libPods.a */; };
-		341390221BBEDCA900D904A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 341390201BBEDCA900D904A4 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		341390231BBEDCA900D904A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341390211BBEDCA900D904A4 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		341390261BBEDCB700D904A4 /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 341390251BBEDCB700D904A4 /* Updater.m */; settings = {ASSET_TAGS = (); }; };
-		341390281BBEDCCB00D904A4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 341390271BBEDCCB00D904A4 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
-		3413902A1BBEDCD800D904A4 /* NoEjectDelay_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 341390291BBEDCD800D904A4 /* NoEjectDelay_pub.pem */; settings = {ASSET_TAGS = (); }; };
-		3413902C1BBEDCFD00D904A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413902B1BBEDCFD00D904A4 /* main.m */; settings = {ASSET_TAGS = (); }; };
-		34436D2B1BBEDD6B003226AF /* 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2A1BBEDD6B003226AF /* 1024.png */; settings = {ASSET_TAGS = (); }; };
-		34436D2E1BBEDD88003226AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2C1BBEDD88003226AF /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
+		341390221BBEDCA900D904A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 341390201BBEDCA900D904A4 /* AppDelegate.m */; };
+		341390231BBEDCA900D904A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341390211BBEDCA900D904A4 /* Assets.xcassets */; };
+		341390261BBEDCB700D904A4 /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 341390251BBEDCB700D904A4 /* Updater.m */; };
+		3413902A1BBEDCD800D904A4 /* NoEjectDelay_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 341390291BBEDCD800D904A4 /* NoEjectDelay_pub.pem */; };
+		3413902C1BBEDCFD00D904A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413902B1BBEDCFD00D904A4 /* main.m */; };
+		34436D2B1BBEDD6B003226AF /* 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2A1BBEDD6B003226AF /* 1024.png */; };
+		34436D2E1BBEDD88003226AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2C1BBEDD88003226AF /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,7 +152,7 @@
 		343068DB1BB27BF200EA2BD0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Takayama Fumihiko";
 				TargetAttributes = {
 					343068E21BB27BF200EA2BD0 = {
@@ -187,7 +186,6 @@
 				3413902A1BBEDCD800D904A4 /* NoEjectDelay_pub.pem in Resources */,
 				34436D2E1BBEDD88003226AF /* MainMenu.xib in Resources */,
 				34436D2B1BBEDD6B003226AF /* 1024.png in Resources */,
-				341390281BBEDCCB00D904A4 /* Info.plist in Resources */,
 				341390231BBEDCA900D904A4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
