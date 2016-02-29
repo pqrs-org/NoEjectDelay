@@ -2,20 +2,20 @@
 #import "Updater.h"
 
 @interface AppDelegate ()
-@property(weak) IBOutlet NSWindow* window;
-@property(weak) IBOutlet NSTextField* label_version_;
-@property(weak) IBOutlet Updater* updater_;
 
-- (IBAction)launchUninstaller:(id)sender;
+@property(weak) IBOutlet NSWindow* window;
+@property(weak) IBOutlet NSTextField* label_version;
+@property(weak) IBOutlet Updater* updater;
+
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
   NSString* version = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
-  [self.label_version_ setStringValue:version];
+  [self.label_version setStringValue:version];
 
-  [self.updater_ checkForUpdatesInBackground:self];
+  [self.updater checkForUpdatesInBackground];
 }
 
 - (void)applicationWillTerminate:(NSNotification*)aNotification {
@@ -23,6 +23,14 @@
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
   return YES;
+}
+
+- (IBAction)checkForUpdatesStableOnly:(id)sender {
+  [self.updater checkForUpdatesStableOnly];
+}
+
+- (IBAction)checkForUpdatesWithBetaVersion:(id)sender {
+  [self.updater checkForUpdatesWithBetaVersion];
 }
 
 - (IBAction)launchUninstaller:(id)sender {

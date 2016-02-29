@@ -1,14 +1,11 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-@interface Updater : NSObject {
-}
+@interface Updater : NSObject
 
-- (IBAction)checkForUpdates:(id)sender;
-- (IBAction)checkForUpdatesInBackground:(id)sender;
-
-- (IBAction)checkForUpdatesStableOnly:(id)sender;
-- (IBAction)checkForUpdatesWithBetaVersion:(id)sender;
+- (void)checkForUpdatesInBackground;
+- (void)checkForUpdatesStableOnly;
+- (void)checkForUpdatesWithBetaVersion;
 
 @end
