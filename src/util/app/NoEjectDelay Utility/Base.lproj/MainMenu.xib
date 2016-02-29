@@ -120,10 +120,10 @@
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LHb-Jy-Bqs">
-                                    <rect key="frame" x="226" y="22" width="210" height="16"/>
-                                    <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fwb-MZ-zwP">
+                                    <rect key="frame" x="258" y="13" width="183" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Check for beta updates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fwb-MZ-zwP">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="miniSystem"/>
+                                        <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="checkForUpdatesWithBetaVersion:" target="hSe-OS-a3z" id="l9h-p0-Sc3"/>
