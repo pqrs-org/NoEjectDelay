@@ -1,4 +1,4 @@
-# Since 7.0.0
+# Version 7.1.0
 
 * NoEjectDelay Utility UI has been adjusted.
 
