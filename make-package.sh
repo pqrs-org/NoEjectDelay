@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # set $GEM_HOME/bin/ for CocoaPods.
 PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:$GEM_HOME/bin"; export PATH
