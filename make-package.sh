@@ -5,7 +5,11 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:$GEM_HOME/bin"; export PATH
 
 version=$(cat version)
 
-make clean build || exit $?
+echo "make clean build"
+make clean build | ruby files/extra/reduce-logs.rb
+if [ ${PIPESTATUS[0]} -ne 0 ]; then
+    exit 99
+fi
 
 # --------------------------------------------------
 # https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptPackaging/packaging_tutorial.html
