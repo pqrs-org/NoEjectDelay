@@ -4,7 +4,6 @@ CONFIGURATION = Release
 AUTOUPDATE_ICON = 'build/Release/NoEjectDelay Utility.app/Contents/Frameworks/Sparkle.framework/Versions/A/Resources/Autoupdate.app/Contents/Resources/AppIcon.icns'
 
 all:
-	pod install --no-repo-update
 	$(MAKE) -C ../../../pkginfo
 	xcodebuild \
 		-workspace *.xcworkspace \
@@ -33,3 +32,4 @@ run: all
 
 podupdate:
 	pod update
+	pod install --no-repo-update
