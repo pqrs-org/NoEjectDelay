@@ -1,6 +1,6 @@
 # Since 7.1.1
 
-* Update Sparkle framework.
+* Sparkle framework has been updated.
 
 
 # Version 7.1.0
