@@ -1,3 +1,8 @@
+# Since 7.1.1
+
+* Update Sparkle framework.
+
+
 # Version 7.1.0
 
 * NoEjectDelay Utility UI has been adjusted.
