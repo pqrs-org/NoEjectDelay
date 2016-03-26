@@ -1,4 +1,4 @@
-#import "Sparkle/SUUpdater.h"
+@import Sparkle;
 #import "Updater.h"
 
 @interface Updater ()
