@@ -15,6 +15,7 @@
 		3413902C1BBEDCFD00D904A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413902B1BBEDCFD00D904A4 /* main.m */; };
 		34436D2B1BBEDD6B003226AF /* 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2A1BBEDD6B003226AF /* 1024.png */; };
 		34436D2E1BBEDD88003226AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2C1BBEDD88003226AF /* MainMenu.xib */; };
+		344418161CA66BBA009DF07A /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 344418151CA66BBA009DF07A /* PreferencesManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		343068E31BB27BF200EA2BD0 /* NoEjectDelay Utility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NoEjectDelay Utility.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34436D2A1BBEDD6B003226AF /* 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1024.png; path = ../../../share/Resources/icons/1024.png; sourceTree = "<group>"; };
 		34436D2D1BBEDD88003226AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "NoEjectDelay Utility/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		344418141CA66BBA009DF07A /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = "NoEjectDelay Utility/Classes/PreferencesManager.h"; sourceTree = SOURCE_ROOT; };
+		344418151CA66BBA009DF07A /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = "NoEjectDelay Utility/Classes/PreferencesManager.m"; sourceTree = SOURCE_ROOT; };
 		59BBFF3A208B049105C30843 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5A9627C4F0B281164C491B2C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +103,8 @@
 		34378C251BB2DC7900219EA4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				344418141CA66BBA009DF07A /* PreferencesManager.h */,
+				344418151CA66BBA009DF07A /* PreferencesManager.m */,
 				341390241BBEDCB700D904A4 /* Updater.h */,
 				341390251BBEDCB700D904A4 /* Updater.m */,
 			);
@@ -245,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344418161CA66BBA009DF07A /* PreferencesManager.m in Sources */,
 				341390221BBEDCA900D904A4 /* AppDelegate.m in Sources */,
 				3413902C1BBEDCFD00D904A4 /* main.m in Sources */,
 				341390261BBEDCB700D904A4 /* Updater.m in Sources */,

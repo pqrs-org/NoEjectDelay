@@ -1,8 +1,10 @@
 @import Sparkle;
+#import "PreferencesManager.h"
 #import "Updater.h"
 
 @interface Updater ()
 
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property SUUpdater* suupdater;
 
 @end
@@ -19,16 +21,27 @@
   return self;
 }
 
-- (NSString*)getFeedURL:(BOOL)isStableOnly {
-  if (isStableOnly) {
-    return @"https://pqrs.org/macosx/karabiner/files/noejectdelay-appcast.xml";
-  } else {
-    return @"https://pqrs.org/macosx/karabiner/files/noejectdelay-appcast-devel.xml";
+- (NSString*)getFeedURL:(BOOL)includingBetaVersions {
+  // ----------------------------------------
+  // check beta & stable releases.
+
+  // Once we check appcast.xml, SUFeedURL is stored in a user's preference file.
+  // So that Sparkle gives priority to a preference over Info.plist,
+  // we overwrite SUFeedURL here.
+  if (includingBetaVersions) {
+    return @"https://pqrs.org/osx/karabiner/files/noejectdelay-appcast-devel.xml";
   }
+
+  return @"https://pqrs.org/osx/karabiner/files/noejectdelay-appcast.xml";
 }
 
 - (void)check:(BOOL)isBackground {
-  NSString* url = [self getFeedURL:YES];
+  if (![self.preferencesManager isCheckForUpdates]) {
+    NSLog(@"skip checkForUpdates");
+    return;
+  }
+
+  NSString* url = [self getFeedURL:NO];
   [self.suupdater setFeedURL:[NSURL URLWithString:url]];
 
   NSLog(@"checkForUpdates %@", url);
@@ -44,14 +57,14 @@
 }
 
 - (void)checkForUpdatesStableOnly {
-  NSString* url = [self getFeedURL:YES];
+  NSString* url = [self getFeedURL:NO];
   [self.suupdater setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);
   [self.suupdater checkForUpdates:nil];
 }
 
 - (void)checkForUpdatesWithBetaVersion {
-  NSString* url = [self getFeedURL:NO];
+  NSString* url = [self getFeedURL:YES];
   [self.suupdater setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);
   [self.suupdater checkForUpdates:nil];
