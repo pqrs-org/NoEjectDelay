@@ -6,4 +6,6 @@ find ../../* \
     ! -ipath '*/Pods/*' \
     ! -ipath '*/build/*' \
     \
-    | xargs clang-format -i
+    | while read f; do
+    clang-format -i "$f"
+done
