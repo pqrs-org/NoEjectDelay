@@ -1,7 +1,4 @@
-// -*- indent-tabs-mode: nil; -*-
-
-#ifndef _NoEjectDelay_h
-#define _NoEjectDelay_h
+#pragma once
 
 #include <IOKit/IOService.h>
 
@@ -36,5 +33,3 @@ private:
   };
   IOService* devices_[MAXNUM_DEVICES];
 };
-
-#endif
