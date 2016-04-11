@@ -2,8 +2,8 @@
 
 #define protected public // A hack for access private member of IOHIKeyboard
 #define private public
-#include <IOKit/hidsystem/IOHIKeyboard.h>
 #include <IOKit/hidevent/IOHIDEventService.h>
+#include <IOKit/hidsystem/IOHIKeyboard.h>
 #undef protected
 #undef private
 #include <IOKit/IOLib.h>
@@ -220,11 +220,9 @@ void org_pqrs_driver_NoEjectDelay::timer_callback(OSObject* target, IOTimerEvent
 
     // set Eject delay.
     {
-      {
-        IOHIDEventService* service = OSDynamicCast(IOHIDEventService, self->devices_[i]);
-        if (service) {
-          setEjectDelayMS(service);
-        }
+      IOHIDEventService* service = OSDynamicCast(IOHIDEventService, self->devices_[i]);
+      if (service) {
+        setEjectDelayMS(service);
       }
     }
 
