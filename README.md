@@ -15,7 +15,7 @@ Use this software when you change the eject key behavior in KeyRemap4MacBook.
 You also can get the latest stable release package via fixed URL.
 
 ```
-$ curl -L -o noejectdelay-latest.dmg https://pqrs.org/latest/noejectdelay.dmg
+$ curl -L -o noejectdelay-latest.dmg https://pqrs.org/latest/noejectdelay
 ```
 
 ## System requirements
