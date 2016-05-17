@@ -12,6 +12,11 @@ Use this software when you change the eject key behavior in KeyRemap4MacBook.
 * master: https://pqrs.org/macosx/keyremap4macbook/noejectdelay.html
 * backup: http://tekezo.github.io/pqrs.org/
 
+You also can get the latest stable release package via fixed URL.
+
+```
+$ curl -L -o noejectdelay-latest.dmg https://pqrs.org/latest/noejectdelay.dmg
+```
 
 ## System requirements
 
