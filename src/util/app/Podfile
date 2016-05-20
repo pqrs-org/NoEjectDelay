@@ -1,2 +1,3 @@
-source 'https://github.com/CocoaPods/Specs.git'
-pod 'Sparkle'
+target 'NoEjectDelay Utility' do
+  pod 'Sparkle'
+end

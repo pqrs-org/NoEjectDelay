@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		113C8BD351F577D21E995765 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19613E723FF06FDBD39A2AC4 /* libPods.a */; };
 		341390221BBEDCA900D904A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 341390201BBEDCA900D904A4 /* AppDelegate.m */; };
 		341390231BBEDCA900D904A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341390211BBEDCA900D904A4 /* Assets.xcassets */; };
 		341390261BBEDCB700D904A4 /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 341390251BBEDCB700D904A4 /* Updater.m */; };
@@ -16,10 +15,11 @@
 		34436D2B1BBEDD6B003226AF /* 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2A1BBEDD6B003226AF /* 1024.png */; };
 		34436D2E1BBEDD88003226AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34436D2C1BBEDD88003226AF /* MainMenu.xib */; };
 		344418161CA66BBA009DF07A /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 344418151CA66BBA009DF07A /* PreferencesManager.m */; };
+		5DC09007A34A1851B25DE876 /* libPods-NoEjectDelay Utility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 444E31C65A9064319D868F33 /* libPods-NoEjectDelay Utility.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		19613E723FF06FDBD39A2AC4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		26EB20DF11EA0ADCEDDB6905 /* Pods-NoEjectDelay Utility.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoEjectDelay Utility.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoEjectDelay Utility/Pods-NoEjectDelay Utility.release.xcconfig"; sourceTree = "<group>"; };
 		3413901F1BBEDCA900D904A4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "NoEjectDelay Utility/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
 		341390201BBEDCA900D904A4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "NoEjectDelay Utility/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
 		341390211BBEDCA900D904A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "NoEjectDelay Utility/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
@@ -33,8 +33,7 @@
 		34436D2D1BBEDD88003226AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "NoEjectDelay Utility/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 		344418141CA66BBA009DF07A /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = "NoEjectDelay Utility/Classes/PreferencesManager.h"; sourceTree = SOURCE_ROOT; };
 		344418151CA66BBA009DF07A /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = "NoEjectDelay Utility/Classes/PreferencesManager.m"; sourceTree = SOURCE_ROOT; };
-		59BBFF3A208B049105C30843 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		5A9627C4F0B281164C491B2C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		444E31C65A9064319D868F33 /* libPods-NoEjectDelay Utility.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoEjectDelay Utility.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				113C8BD351F577D21E995765 /* libPods.a in Frameworks */,
+				5DC09007A34A1851B25DE876 /* libPods-NoEjectDelay Utility.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,8 +53,8 @@
 			children = (
 				343068E51BB27BF200EA2BD0 /* NoEjectDelay Utility */,
 				343068E41BB27BF200EA2BD0 /* Products */,
-				DCF4002436C0BFD1BE7972C8 /* Pods */,
-				C5173D2E510B0B49511C3B4F /* Frameworks */,
+				A903738FD5CB6EF679312615 /* Pods */,
+				D14CF44B0B8596078257785B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,21 +110,20 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		C5173D2E510B0B49511C3B4F /* Frameworks */ = {
+		A903738FD5CB6EF679312615 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				19613E723FF06FDBD39A2AC4 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DCF4002436C0BFD1BE7972C8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				59BBFF3A208B049105C30843 /* Pods.debug.xcconfig */,
-				5A9627C4F0B281164C491B2C /* Pods.release.xcconfig */,
+				26EB20DF11EA0ADCEDDB6905 /* Pods-NoEjectDelay Utility.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D14CF44B0B8596078257785B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				444E31C65A9064319D868F33 /* libPods-NoEjectDelay Utility.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,12 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 343068F41BB27BF200EA2BD0 /* Build configuration list for PBXNativeTarget "NoEjectDelay Utility" */;
 			buildPhases = (
-				4F2AFC8FD474CDE4A421EA3D /* Check Pods Manifest.lock */,
+				53296E0E415D77FBC2835316 /* 📦 Check Pods Manifest.lock */,
 				343068DF1BB27BF200EA2BD0 /* Sources */,
 				343068E01BB27BF200EA2BD0 /* Frameworks */,
 				343068E11BB27BF200EA2BD0 /* Resources */,
-				1EDFA179468F68D56E51F83D /* Copy Pods Resources */,
-				90E7FD80867D09BE145D91B4 /* Embed Pods Frameworks */,
+				6B0F843DF436890554FAB85A /* 📦 Embed Pods Frameworks */,
+				1E14A2829DA9F4B507E7994B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,29 +196,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1EDFA179468F68D56E51F83D /* Copy Pods Resources */ = {
+		1E14A2829DA9F4B507E7994B /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoEjectDelay Utility/Pods-NoEjectDelay Utility-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4F2AFC8FD474CDE4A421EA3D /* Check Pods Manifest.lock */ = {
+		53296E0E415D77FBC2835316 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,19 +226,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		90E7FD80867D09BE145D91B4 /* Embed Pods Frameworks */ = {
+		6B0F843DF436890554FAB85A /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoEjectDelay Utility/Pods-NoEjectDelay Utility-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -319,7 +317,7 @@
 		};
 		343068F61BB27BF200EA2BD0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A9627C4F0B281164C491B2C /* Pods.release.xcconfig */;
+			baseConfigurationReference = 26EB20DF11EA0ADCEDDB6905 /* Pods-NoEjectDelay Utility.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
